@@ -1,0 +1,397 @@
+object frmClientes: TfrmClientes
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Clientes'
+  ClientHeight = 712
+  ClientWidth = 628
+  Color = cl3DLight
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poScreenCenter
+  Visible = True
+  OnShow = FormShow
+  TextHeight = 15
+  object ntbPrincipal: TTabbedNotebook
+    Left = 0
+    Top = 0
+    Width = 628
+    Height = 712
+    Align = alClient
+    PageIndex = 1
+    TabFont.Charset = DEFAULT_CHARSET
+    TabFont.Color = clBtnText
+    TabFont.Height = -15
+    TabFont.Name = 'Segoe UI'
+    TabFont.Style = []
+    TabOrder = 0
+    object TTabPage
+      Left = 4
+      Top = 31
+      Caption = 'Consulta'
+      ExplicitTop = 26
+      ExplicitWidth = 292
+      ExplicitHeight = 220
+      object pnlPrincipalConsulta: TPanel
+        Left = 0
+        Top = 0
+        Width = 620
+        Height = 677
+        Align = alClient
+        BevelOuter = bvNone
+        TabOrder = 0
+        ExplicitWidth = 622
+        ExplicitHeight = 433
+        object pnlGrid: TPanel
+          Left = 0
+          Top = 181
+          Width = 620
+          Height = 496
+          Align = alBottom
+          BevelOuter = bvNone
+          Padding.Left = 5
+          Padding.Top = 5
+          Padding.Right = 5
+          Padding.Bottom = 5
+          TabOrder = 0
+          object dbgConsulta: TDBGrid
+            Left = 5
+            Top = 5
+            Width = 610
+            Height = 486
+            Align = alClient
+            DrawingStyle = gdsGradient
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -12
+            TitleFont.Name = 'Segoe UI'
+            TitleFont.Style = []
+          end
+        end
+        object pnlConsulta: TPanel
+          Left = 0
+          Top = 0
+          Width = 620
+          Height = 181
+          Align = alClient
+          BevelOuter = bvNone
+          TabOrder = 1
+          object lblCidadeConsulta: TLabel
+            Left = 5
+            Top = 128
+            Width = 37
+            Height = 15
+            Caption = 'Cidade'
+          end
+          object lblDataCadastroConsulta: TLabel
+            Left = 368
+            Top = 30
+            Width = 88
+            Height = 15
+            Caption = 'Data de cadastro'
+          end
+          object cbCidadeConsulta: TComboBox
+            Left = 5
+            Top = 146
+            Width = 217
+            Height = 23
+            TabOrder = 2
+          end
+          object edtCpfConsulta: TLabeledEdit
+            Left = 5
+            Top = 96
+            Width = 119
+            Height = 23
+            EditLabel.Width = 21
+            EditLabel.Height = 15
+            EditLabel.Caption = 'CPF'
+            EditMask = '000\.000\.000\-00;1;_'
+            MaxLength = 14
+            TabOrder = 1
+            Text = '   .   .   -  '
+          end
+          object edtNomeConsulta: TLabeledEdit
+            Left = 5
+            Top = 48
+            Width = 218
+            Height = 23
+            EditLabel.Width = 33
+            EditLabel.Height = 15
+            EditLabel.Caption = 'Nome'
+            TabOrder = 0
+            Text = ''
+          end
+          object edtDtIniConsulta: TMaskEdit
+            Left = 368
+            Top = 48
+            Width = 119
+            Height = 23
+            EditMask = '!99/99/0000;1;_'
+            MaxLength = 10
+            TabOrder = 3
+            Text = '  /  /    '
+          end
+          object edtDtFimConsulta: TMaskEdit
+            Left = 495
+            Top = 48
+            Width = 120
+            Height = 23
+            EditMask = '!99/99/0000;1;_'
+            MaxLength = 10
+            TabOrder = 4
+            Text = '  /  /    '
+          end
+          object btnConsultar: TButton
+            Left = 368
+            Top = 144
+            Width = 247
+            Height = 25
+            Caption = 'Consultar'
+            TabOrder = 5
+          end
+        end
+      end
+    end
+    object TTabPage
+      Left = 4
+      Top = 31
+      Caption = 'Cadastro'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
+      object pnlPrincipalCadastro: TPanel
+        Left = 0
+        Top = 0
+        Width = 620
+        Height = 677
+        Align = alClient
+        BevelOuter = bvNone
+        TabOrder = 0
+        ExplicitLeft = 88
+        object Label1: TLabel
+          Left = 5
+          Top = 140
+          Width = 33
+          Height = 15
+          Caption = 'Nome'
+        end
+        object Label2: TLabel
+          Left = 5
+          Top = 95
+          Width = 39
+          Height = 15
+          Caption = 'C'#243'digo'
+        end
+        object Label3: TLabel
+          Left = 5
+          Top = 185
+          Width = 21
+          Height = 15
+          Caption = 'CPF'
+        end
+        object Label10: TLabel
+          Left = 5
+          Top = 259
+          Width = 72
+          Height = 15
+          Caption = 'Data cadastro'
+        end
+        object Label11: TLabel
+          Left = 5
+          Top = 307
+          Width = 64
+          Height = 15
+          Caption = 'Nascimento'
+        end
+        object pnlBtnCrud: TPanel
+          Left = 0
+          Top = 0
+          Width = 620
+          Height = 42
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 0
+          object btnExcluir: TSpeedButton
+            Left = 240
+            Top = 0
+            Width = 80
+            Height = 42
+            Align = alLeft
+            Caption = 'Excluir'
+            ExplicitLeft = 1
+            ExplicitTop = 1
+            ExplicitHeight = 40
+          end
+          object btnCancelar: TSpeedButton
+            Left = 160
+            Top = 0
+            Width = 80
+            Height = 42
+            Align = alLeft
+            Caption = 'Cancelar'
+            ExplicitLeft = 1
+            ExplicitTop = 1
+            ExplicitHeight = 40
+          end
+          object btnGravar: TSpeedButton
+            Left = 80
+            Top = 0
+            Width = 80
+            Height = 42
+            Align = alLeft
+            DisabledImageName = 'btnGravar'
+            Caption = 'Gravar'
+            ExplicitLeft = 1
+            ExplicitTop = 1
+            ExplicitHeight = 40
+          end
+          object btnNovo: TSpeedButton
+            Left = 0
+            Top = 0
+            Width = 80
+            Height = 42
+            Align = alLeft
+            Caption = 'Novo'
+            ExplicitLeft = 1
+            ExplicitTop = 1
+            ExplicitHeight = 40
+          end
+        end
+        object DBEdit1: TDBEdit
+          Left = 5
+          Top = 156
+          Width = 315
+          Height = 23
+          TabOrder = 1
+        end
+        object DBEdit2: TDBEdit
+          Left = 5
+          Top = 111
+          Width = 75
+          Height = 23
+          TabOrder = 2
+        end
+        object DBEdit3: TDBEdit
+          Left = 5
+          Top = 201
+          Width = 119
+          Height = 23
+          TabOrder = 3
+        end
+        object GroupBox1: TGroupBox
+          Left = 5
+          Top = 359
+          Width = 610
+          Height = 137
+          Caption = 'Endere'#231'o'
+          TabOrder = 4
+          object Label4: TLabel
+            Left = 19
+            Top = 23
+            Width = 20
+            Height = 15
+            Caption = 'Rua'
+          end
+          object Label5: TLabel
+            Left = 19
+            Top = 68
+            Width = 44
+            Height = 15
+            Caption = 'N'#250'mero'
+          end
+          object Label6: TLabel
+            Left = 95
+            Top = 68
+            Width = 77
+            Height = 15
+            Caption = 'Complemento'
+          end
+          object Label7: TLabel
+            Left = 447
+            Top = 23
+            Width = 37
+            Height = 15
+            Caption = 'Cidade'
+          end
+          object Label8: TLabel
+            Left = 392
+            Top = 23
+            Width = 14
+            Height = 15
+            Caption = 'UF'
+          end
+          object Label9: TLabel
+            Left = 266
+            Top = 68
+            Width = 70
+            Height = 15
+            Caption = 'Coordenadas'
+          end
+          object DBEdit4: TDBEdit
+            Left = 19
+            Top = 39
+            Width = 315
+            Height = 23
+            TabOrder = 0
+          end
+          object DBEdit5: TDBEdit
+            Left = 19
+            Top = 84
+            Width = 70
+            Height = 23
+            TabOrder = 1
+          end
+          object DBEdit6: TDBEdit
+            Left = 95
+            Top = 84
+            Width = 140
+            Height = 23
+            TabOrder = 2
+          end
+          object DBComboBox1: TDBComboBox
+            Left = 447
+            Top = 40
+            Width = 145
+            Height = 23
+            TabOrder = 3
+          end
+          object DBComboBox2: TDBComboBox
+            Left = 392
+            Top = 40
+            Width = 49
+            Height = 23
+            TabOrder = 4
+          end
+          object DBEdit7: TDBEdit
+            Left = 266
+            Top = 84
+            Width = 326
+            Height = 23
+            TabOrder = 5
+          end
+        end
+        object DBEdit8: TDBEdit
+          Left = 5
+          Top = 275
+          Width = 119
+          Height = 23
+          TabOrder = 5
+        end
+        object DBEdit9: TDBEdit
+          Left = 5
+          Top = 323
+          Width = 119
+          Height = 23
+          TabOrder = 6
+        end
+      end
+    end
+  end
+end
