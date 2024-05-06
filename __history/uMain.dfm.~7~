@@ -2366,14 +2366,14 @@ object frmMain: TfrmMain
     object Cadastros1: TMenuItem
       Caption = 'Cadastros'
       object Clientes1: TMenuItem
-        Caption = 'Clientes (alt+c)'
+        Caption = 'Clientes'
         OnClick = Clientes1Click
       end
       object Projetos1: TMenuItem
-        Caption = 'Projetos (alt+p)'
+        Caption = 'Projetos'
       end
       object Funcionrios1: TMenuItem
-        Caption = 'Funcion'#225'rios (alt+f)'
+        Caption = 'Funcion'#225'rios'
       end
     end
     object Parmetros1: TMenuItem

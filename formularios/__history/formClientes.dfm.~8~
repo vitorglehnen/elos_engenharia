@@ -29,7 +29,8 @@ object frmClientes: TfrmClientes
     TabFont.Name = 'Segoe UI'
     TabFont.Style = []
     TabOrder = 0
-    OnChange = ntbPrincipalChange
+    ExplicitWidth = 624
+    ExplicitHeight = 711
     object TTabPage
       Left = 4
       Top = 31
@@ -178,21 +179,28 @@ object frmClientes: TfrmClientes
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 1
-          ExplicitLeft = 5
-          ExplicitTop = -1
+          ExplicitWidth = 616
+          ExplicitHeight = 185
           object lblCidadeConsulta: TLabel
-            Left = 368
-            Top = 29
-            Width = 42
+            Left = 5
+            Top = 128
+            Width = 37
             Height = 15
-            Caption = 'Cidades'
+            Caption = 'Cidade'
           end
           object lblDataCadastroConsulta: TLabel
-            Left = 5
-            Top = 134
+            Left = 368
+            Top = 30
             Width = 88
             Height = 15
             Caption = 'Data de cadastro'
+          end
+          object cbCidadeConsulta: TComboBox
+            Left = 5
+            Top = 146
+            Width = 217
+            Height = 23
+            TabOrder = 2
           end
           object edtCpfConsulta: TLabeledEdit
             Left = 5
@@ -218,42 +226,34 @@ object frmClientes: TfrmClientes
             TabOrder = 0
             Text = ''
           end
-          object btnConsultar: TButton
-            Left = 368
-            Top = 144
-            Width = 241
-            Height = 25
-            Caption = 'Consultar'
-            TabOrder = 2
-            OnClick = btnConsultarClick
-          end
-          object chklbCidadesConsulta: TCheckListBox
+          object edtDtIniConsulta: TMaskEdit
             Left = 368
             Top = 48
-            Width = 241
-            Height = 79
-            ItemHeight = 15
+            Width = 115
+            Height = 23
+            EditMask = '!99/99/0000;1;_'
+            MaxLength = 10
             TabOrder = 3
+            Text = '  /  /    '
           end
-          object edtDtIniConsulta: TMaskEdit
-            Left = 5
-            Top = 152
-            Width = 114
+          object edtDtFimConsulta: TMaskEdit
+            Left = 495
+            Top = 48
+            Width = 120
             Height = 23
             EditMask = '!99/99/0000;1;_'
             MaxLength = 10
             TabOrder = 4
             Text = '  /  /    '
           end
-          object edtDtFimConsulta: TMaskEdit
-            Left = 132
-            Top = 152
-            Width = 120
-            Height = 23
-            EditMask = '!99/99/0000;1;_'
-            MaxLength = 10
+          object btnConsultar: TButton
+            Left = 368
+            Top = 144
+            Width = 241
+            Height = 25
+            Caption = 'Consultar'
             TabOrder = 5
-            Text = '  /  /    '
+            OnClick = btnConsultarClick
           end
         end
       end
@@ -355,7 +355,6 @@ object frmClientes: TfrmClientes
           TabStop = False
           DataField = 'CL_CODIGO'
           DataSource = dm.dsClientes
-          Enabled = False
           ReadOnly = True
           TabOrder = 6
         end
@@ -412,7 +411,7 @@ object frmClientes: TfrmClientes
             Caption = '*UF'
           end
           object lblCoordenadaCad: TLabel
-            Left = 241
+            Left = 266
             Top = 68
             Width = 70
             Height = 15
@@ -446,7 +445,7 @@ object frmClientes: TfrmClientes
             TabOrder = 4
           end
           object edtCoordenadasCad: TDBEdit
-            Left = 241
+            Left = 266
             Top = 84
             Width = 326
             Height = 23
@@ -466,23 +465,16 @@ object frmClientes: TfrmClientes
           object cbCidadesCad: TComboBox
             Left = 447
             Top = 40
-            Width = 149
+            Width = 142
             Height = 23
             Style = csDropDownList
             TabOrder = 2
             OnChange = cbCidadesCadChange
           end
-          object btnCoordenadaMaps: TBitBtn
-            Left = 573
-            Top = 84
-            Width = 23
-            Height = 23
-            TabOrder = 6
-          end
         end
         object edtDtCadastroCad: TDBEdit
           Left = 5
-          Top = 322
+          Top = 328
           Width = 119
           Height = 23
           TabStop = False

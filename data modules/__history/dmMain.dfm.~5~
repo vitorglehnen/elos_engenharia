@@ -12,7 +12,6 @@ object dm: Tdm
     Left = 48
     Top = 152
     object qryClientesCL_CODIGO: TIntegerField
-      AutoGenerateValue = arAutoInc
       FieldName = 'CL_CODIGO'
       Origin = 'CL_CODIGO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -60,7 +59,7 @@ object dm: Tdm
     object qryClientesCL_FONE: TStringField
       FieldName = 'CL_FONE'
       Origin = 'CL_FONE'
-      EditMask = '(99) 90000-0000;0;_'
+      EditMask = '(99) 00000-0000;1;_'
       Size = 15
     end
     object qryClientesCL_COMPLEMENTO: TStringField
@@ -131,7 +130,7 @@ object dm: Tdm
     object qryClientesCL_CPF: TStringField
       FieldName = 'CL_CPF'
       Origin = 'CL_CPF'
-      EditMask = '999.999.999-99;0;_'
+      EditMask = '999.999.999-99;1;_'
       Size = 11
     end
   end

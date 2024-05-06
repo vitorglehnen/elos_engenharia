@@ -15,8 +15,7 @@ uses
   Vcl.ExtCtrls,
   Vcl.Menus,
   formClientes,
-  Vcl.Imaging.pngimage, System.Actions, Vcl.ActnList,
-  Vcl.PlatformDefaultStyleActnCtrls, Vcl.ActnMan;
+  Vcl.Imaging.pngimage;
 
 type
   TfrmMain = class(TForm)

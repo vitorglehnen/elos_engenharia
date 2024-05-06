@@ -22,7 +22,7 @@ uses
   Vcl.TabNotBk,
   Vcl.Buttons,
   Vcl.DBCtrls,
-  dmMain, Vcl.CategoryButtons, Vcl.CheckLst;
+  dmMain;
 
 type
   TfrmClientes = class(TForm)
@@ -32,8 +32,12 @@ type
     dbgConsulta: TDBGrid;
     pnlConsulta: TPanel;
     lblCidadeConsulta: TLabel;
+    lblDataCadastroConsulta: TLabel;
+    cbCidadeConsulta: TComboBox;
     edtCpfConsulta: TLabeledEdit;
     edtNomeConsulta: TLabeledEdit;
+    edtDtIniConsulta: TMaskEdit;
+    edtDtFimConsulta: TMaskEdit;
     btnConsultar: TButton;
     pnlPrincipalCadastro: TPanel;
     pnlBtnCrud: TPanel;
@@ -64,11 +68,6 @@ type
     DBNavigator1: TDBNavigator;
     DBEdit1: TDBEdit;
     lblFone: TLabel;
-    btnCoordenadaMaps: TBitBtn;
-    chklbCidadesConsulta: TCheckListBox;
-    edtDtIniConsulta: TMaskEdit;
-    lblDataCadastroConsulta: TLabel;
-    edtDtFimConsulta: TMaskEdit;
     procedure FormShow(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure cbEstadosCadChange(Sender: TObject);
@@ -76,8 +75,6 @@ type
     procedure dbgConsultaDblClick(Sender: TObject);
     procedure cbCidadesCadChange(Sender: TObject);
     procedure btnConsultarClick(Sender: TObject);
-    procedure ntbPrincipalChange(Sender: TObject; NewTab: Integer;
-      var AllowChange: Boolean);
   private
     { Private declarations }
 
@@ -105,26 +102,7 @@ implementation
 {$R *.dfm}
 
 procedure TfrmClientes.btnConsultarClick(Sender: TObject);
-var vCidadesSelecionadas : String;
-    vContador : Integer;
 begin
-  {$REGION 'Cidades'}
-  vCidadesSelecionadas := '';
-  vContador := 0;
-
-  FDSClientes.Close;
-
-  for vContador := 0 to chklbCidadesConsulta.Items.Count - 1 do
-  begin
-    if chklbCidadesConsulta.Checked[vContador] then
-        vCidadesSelecionadas := vCidadesSelecionadas + '''' + chklbCidadesConsulta.Items[vContador] + ''''  + ',';
-  end;
-
-  //Deleta a ultima virgula
-  if vCidadesSelecionadas <> '' then
-    Delete(vCidadesSelecionadas, Length(vCidadesSelecionadas), 1);
-  {$ENDREGION}
-
   FDSClientes.Open;
 end;
 
@@ -195,26 +173,23 @@ begin
 
   FDSClientes.FieldByName('CL_INATIVO').AsString := 'N';
   FDSClientes.FieldByName('CL_DTCADASTRO').AsString := FormatDateTime('dd/mm/yyyy', Now);
+
+  cbEstadosCad.ItemIndex := cbEstadosCad.Items.IndexOf('RS');
+  cbEstadosCadChange(Self);
+
+  cbCidadesCad.ItemIndex := cbCidadesCad.Items.IndexOf('Mato Leitao');
 end;
 
 procedure TfrmClientes.DsClientesAfterPost(TDataSet: TDataSet);
 begin
-
+  if FDSClientes.FieldByName('CL_CODIGO').IsNull then
+    ShowMessage(dm.qryClientes.DataSource.DataSet.FieldByName('CL_CODIGO').AsString);
 end;
 
 procedure TfrmClientes.DsClientesAfterScroll(TDataSet: TDataSet);
 begin
-  cbEstadosCad.ItemIndex := cbEstadosCad.Items.IndexOf(FDSClientes.FieldByName('ES_UF').AsString);
-  CarregaCidades;
-
-  cbCidadesCad.ItemIndex := cbCidadesCad.Items.IndexOf(FDSClientes.FieldByName('CI_NOME').AsString);
-
-  if FDSClientes.State = dsInsert then
-  begin
-    cbEstadosCad.ItemIndex := cbEstadosCad.Items.IndexOf('RS');
-    CarregaCidades;
-    cbCidadesCad.ItemIndex := cbCidadesCad.Items.IndexOf('Mato Leitao');
-  end;
+  cbEstadosCad.Text := FDSClientes.FieldByName('ES_UF').AsString;
+  cbCidadesCad.Text := FDSClientes.FieldByName('CI_NOME').AsString;
 end;
 
 procedure TfrmClientes.DsClientesBeforePost(TDataSet: TDataSet);
@@ -227,20 +202,18 @@ end;
 
 procedure TfrmClientes.FormCreate(Sender: TObject);
 begin
-  //Datasets
+  // Datasets
   FDSClientes := DM.dsClientes.DataSet;
   FDSEstados  := DM.dsEstados.DataSet;
   FDSCidades  := DM.dsCidades.DataSet;
 
   FIBGECidades := TStringList.Create;
 
-  //Eventos da query de clientes
   dm.qryClientes.AfterScroll := DsClientesAfterScroll;
   dm.qryClientes.AfterInsert := DsClientesAfterInsert;
   dm.qryClientes.BeforePost  := DsClientesBeforePost;
   dm.qryClientes.AfterPost   := DsClientesAfterPost;
 
-  //Preenche os combobox's
   CarregaEstados;
   CarregaCidades;
 end;
@@ -250,30 +223,6 @@ begin
   ntbPrincipal.PageIndex := 0;
   TDrawGrid(dbgConsulta).ScrollBars := ssVertical;
   DsClientesAfterScroll(dm.dsClientes.DataSet);
-
-  {$REGION 'Preenche cidades da consulta'}
-    dm.qryCidades.Open('select distinct(ci_ibge), ci_nome, ci_estado '+
-                        'from cidades '+
-                        'join clientes on cl_cidade = ci_ibge '+
-                        'order by 1');
-    while not FDSCidades.Eof do
-    begin
-      chklbCidadesConsulta.Items.Add(FDSCidades.FieldByName('ci_nome').AsString);
-
-      FDSCidades.Next;
-    end;
-    {$ENDREGION}
-end;
-
-procedure TfrmClientes.ntbPrincipalChange(Sender: TObject; NewTab: Integer;
-  var AllowChange: Boolean);
-begin
-  if ((ntbPrincipal.PageIndex = 1) and
-      ((FDSClientes.State = dsInsert) or (FDSClientes.State = dsEdit))) then
-  begin
-    AllowChange := False;
-    MessageDlg('Salve ou cancele o registro antes de sair!', mtWarning, [mbOK], 0);
-  end;
 end;
 
 end.
