@@ -30,19 +30,18 @@ object frmClientes: TfrmClientes
     TabFont.Style = []
     TabOrder = 0
     OnChange = ntbPrincipalChange
-    ExplicitWidth = 624
-    ExplicitHeight = 711
     object TTabPage
       Left = 4
-      Top = 26
+      Top = 31
       Caption = 'Consulta'
+      ExplicitTop = 26
       ExplicitWidth = 616
       ExplicitHeight = 681
       object pnlPrincipalConsulta: TPanel
         Left = 0
         Top = 0
         Width = 620
-        Height = 682
+        Height = 677
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
@@ -50,7 +49,7 @@ object frmClientes: TfrmClientes
         ExplicitHeight = 681
         object pnlGrid: TPanel
           Left = 0
-          Top = 186
+          Top = 181
           Width = 620
           Height = 496
           Align = alBottom
@@ -175,12 +174,12 @@ object frmClientes: TfrmClientes
           Left = 0
           Top = 0
           Width = 620
-          Height = 186
+          Height = 181
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 1
-          ExplicitWidth = 616
-          ExplicitHeight = 185
+          ExplicitLeft = 5
+          ExplicitTop = -1
           object lblCidadeConsulta: TLabel
             Left = 368
             Top = 29
@@ -198,15 +197,15 @@ object frmClientes: TfrmClientes
           object edtCpfConsulta: TLabeledEdit
             Left = 5
             Top = 96
-            Width = 111
+            Width = 117
             Height = 23
             EditLabel.Width = 21
             EditLabel.Height = 15
             EditLabel.Caption = 'CPF'
-            EditMask = '999\.999\.999\-99;0;_'
+            EditMask = '000\.000\.000\-00;1;_'
             MaxLength = 14
             TabOrder = 1
-            Text = ''
+            Text = '   .   .   -  '
           end
           object edtNomeConsulta: TLabeledEdit
             Left = 5
@@ -221,7 +220,7 @@ object frmClientes: TfrmClientes
           end
           object btnConsultar: TButton
             Left = 368
-            Top = 150
+            Top = 144
             Width = 241
             Height = 25
             Caption = 'Consultar'
@@ -233,15 +232,15 @@ object frmClientes: TfrmClientes
             Top = 48
             Width = 241
             Height = 79
-            ItemHeight = 17
+            ItemHeight = 15
             TabOrder = 3
           end
           object edtDtIniConsulta: TMaskEdit
             Left = 5
             Top = 152
-            Width = 104
+            Width = 114
             Height = 23
-            EditMask = '!99/99/9999;1;_'
+            EditMask = '!99/99/0000;1;_'
             MaxLength = 10
             TabOrder = 4
             Text = '  /  /    '
@@ -249,9 +248,9 @@ object frmClientes: TfrmClientes
           object edtDtFimConsulta: TMaskEdit
             Left = 132
             Top = 152
-            Width = 110
+            Width = 120
             Height = 23
-            EditMask = '!99/99/9999;1;_'
+            EditMask = '!99/99/0000;1;_'
             MaxLength = 10
             TabOrder = 5
             Text = '  /  /    '
@@ -261,15 +260,16 @@ object frmClientes: TfrmClientes
     end
     object TTabPage
       Left = 4
-      Top = 26
+      Top = 31
       Caption = 'Cadastro'
+      ExplicitTop = 26
       ExplicitWidth = 616
       ExplicitHeight = 681
       object pnlPrincipalCadastro: TPanel
         Left = 0
         Top = 0
         Width = 620
-        Height = 682
+        Height = 677
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
