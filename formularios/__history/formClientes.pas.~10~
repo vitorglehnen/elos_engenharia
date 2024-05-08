@@ -23,9 +23,7 @@ uses
   Vcl.DBCtrls,
   dmMain,
   Vcl.CategoryButtons,
-  Vcl.CheckLst,
-  ShellAPI,
-  uReqUteis, System.JSON;
+  Vcl.CheckLst;
 
 type
   TfrmClientes = class(TForm)
@@ -72,11 +70,6 @@ type
     edtDtIniConsulta: TMaskEdit;
     lblDataCadastroConsulta: TLabel;
     edtDtFimConsulta: TMaskEdit;
-    edtCepCad: TDBEdit;
-    lblCepCad: TLabel;
-    btnCepMaps: TBitBtn;
-    edtBairroCad: TDBEdit;
-    lblBairroCad: TLabel;
     procedure FormShow(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure cbEstadosCadChange(Sender: TObject);
@@ -86,7 +79,6 @@ type
     procedure btnConsultarClick(Sender: TObject);
     procedure ntbPrincipalChange(Sender: TObject; NewTab: Integer;
       var AllowChange: Boolean);
-    procedure btnCepMapsClick(Sender: TObject);
   private
     { Private declarations }
 
@@ -117,37 +109,6 @@ uses
   System.SysUtils;
 
 {$R *.dfm}
-
-procedure TfrmClientes.btnCepMapsClick(Sender: TObject);
-var vUrl, vCep : String;
-    vJsonResponseCep: TJSONObject;
-begin
-  vCep := FDSClientes.FieldByName('CL_CEP').AsString;
-
-  if vCep <> '' then
-  begin
-    // Realiza a requisição para pegar as informações do CEP e já preenche nos campos
-    vJsonResponseCep := RetornaInformacoesCep(vCep);
-
-    with FDSClientes do
-    begin
-      if FDSClientes.State <> dsEdit then
-      FDSClientes.Edit;
-
-      cbEstadosCad.ItemIndex := cbEstadosCad.Items.IndexOf(vJsonResponseCep.GetValue('uf').Value);
-      cbCidadesCad.ItemIndex := cbCidadesCad.Items.IndexOf(RemoveAcentos(vJsonResponseCep.GetValue('localidade').Value));
-      FDSClientes.FieldByName('CL_COMPLEMENTO').AsString := vJsonResponseCep.GetValue('complemento').Value;
-      FDSClientes.FieldByName('CL_BAIRRO').AsString := vJsonResponseCep.GetValue('bairro').Value;
-      FDSClientes.FieldByName('CL_RUA').AsString := vJsonResponseCep.GetValue('logradouro').Value;
-
-      FDSClientes.Post;
-    end;
-
-    // Abre a localização do CEP no google maps
-    vUrl := 'https://www.google.com/maps/search/?api=1&query=' + vCep;
-    ShellExecute(0, 'open', PChar(vUrl), nil, nil, SW_SHOWNORMAL);
-  end;
-end;
 
 procedure TfrmClientes.btnConsultarClick(Sender: TObject);
 begin

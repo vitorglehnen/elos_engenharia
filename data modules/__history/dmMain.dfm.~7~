@@ -134,16 +134,6 @@ object dm: Tdm
       EditMask = '999.999.999-99;0;_'
       Size = 11
     end
-    object qryClientesCL_CEP: TStringField
-      FieldName = 'CL_CEP'
-      Origin = 'CL_CEP'
-      EditMask = '#####-###;0;_'
-    end
-    object qryClientesCL_BAIRRO: TStringField
-      FieldName = 'CL_BAIRRO'
-      Origin = 'CL_BAIRRO'
-      Size = 30
-    end
   end
   object dsClientes: TDataSource
     DataSet = qryClientes
@@ -156,6 +146,7 @@ object dm: Tdm
     Top = 160
   end
   object qryCidades: TFDQuery
+    Active = True
     Connection = connection
     SQL.Strings = (
       'select *'
@@ -186,6 +177,7 @@ object dm: Tdm
     Top = 232
   end
   object qryEstados: TFDQuery
+    Active = True
     Connection = connection
     SQL.Strings = (
       'select *'

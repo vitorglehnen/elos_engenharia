@@ -4,8 +4,7 @@ uses
   Vcl.Forms,
   uMain in 'uMain.pas' {frmMain},
   formClientes in 'formularios\formClientes.pas' {frmClientes},
-  dmMain in 'data modules\dmMain.pas' {dm: TDataModule},
-  uReqUteis in 'api\uReqUteis.pas';
+  dmMain in 'data modules\dmMain.pas' {dm: TDataModule};
 
 {$R *.res}
 

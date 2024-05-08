@@ -1,0 +1,14 @@
+unit uReqUteis;
+
+interface
+
+function RetornaInformacoesCep: String;
+
+implementation
+
+function RetornaInformacoesCep: String;
+begin
+  Result := '';
+end;
+
+end.
