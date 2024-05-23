@@ -77,7 +77,6 @@ type
     btnCepMaps: TBitBtn;
     edtBairroCad: TDBEdit;
     lblBairroCad: TLabel;
-    btnWhatsApp: TBitBtn;
     procedure FormShow(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure cbEstadosCadChange(Sender: TObject);
@@ -88,8 +87,6 @@ type
     procedure ntbPrincipalChange(Sender: TObject; NewTab: Integer;
       var AllowChange: Boolean);
     procedure btnCepMapsClick(Sender: TObject);
-    procedure btnCoordenadaMapsClick(Sender: TObject);
-    procedure btnWhatsAppClick(Sender: TObject);
   private
     { Private declarations }
 
@@ -159,33 +156,9 @@ begin
   FDSClientes.Open;
 end;
 
-procedure TfrmClientes.btnCoordenadaMapsClick(Sender: TObject);
-var vUrl, vCoordenadas : String;
-begin
-  vCoordenadas := FDSClientes.FieldByName('CL_COORDENADAS').AsString;
-
-  if not vCoordenadas.IsEmpty then
-  begin
-    vUrl := 'https://www.google.com/maps/search/?api=1&query=' + vCoordenadas;
-    ShellExecute(0, 'open', PChar(vUrl), nil, nil, SW_SHOWNORMAL);
-  end;
-end;
-
 procedure TfrmClientes.btnNovoClick(Sender: TObject);
 begin
   FDSClientes.Append;
-end;
-
-procedure TfrmClientes.btnWhatsAppClick(Sender: TObject);
-var vUrl, vFone : String;
-begin
-  vFone := FDSClientes.FieldByName('CL_FONE').AsString;
-
-  if not vFone.IsEmpty then
-  begin
-    vUrl := 'https://wa.me/55' + FDSClientes.FieldByName('CL_FONE').AsString;
-    ShellExecute(0, 'open', PChar(vUrl), nil, nil, SW_SHOWNORMAL);
-  end;
 end;
 
 procedure TfrmClientes.CarregaCidades;
@@ -381,9 +354,9 @@ begin
   if (edtNomeConsulta.Text <> '') then
   begin
     if vWhereSql = '' then
-      vWhereSql := 'UPPER(CL_NOME) LIKE ' + '''%' + UpperCase(edtNomeConsulta.Text) + '%''' + ' and '
+      vWhereSql := 'UPPER(CL_NOME) LIKE ' + '''' + UpperCase(edtNomeConsulta.Text) + '%''' + ' and '
     else
-      vWhereSql := vWhereSql + 'UPPER(CL_NOME) LIKE ' + '''%' + UpperCase(edtNomeConsulta.Text) + '%''' + ' and ';
+      vWhereSql := vWhereSql + 'CL_NOME LIKE ' + '''' + UpperCase(edtNomeConsulta.Text) + '%''' + ' and ';
   end;
   {$ENDREGION}
 
@@ -391,13 +364,9 @@ begin
   if vWhereSql <> '' then
   begin
     vWhereSql := Copy(vWhereSql, 1, Length(vWhereSql) - 4);
-    vWhereSql := ' WHERE ' + vWhereSql;
   end;
-
-  dm.qryClientes.SQL.Text := 'select * '+
-                              'from clientes '+
-                              'join cidades on ci_ibge = cl_cidade '+
-                              'join estados on es_ibge = ci_estado' + vWhereSql;
+  
+  ShowMessage(vWhereSql);
 end;
 
 procedure TfrmClientes.ntbPrincipalChange(Sender: TObject; NewTab: Integer;
