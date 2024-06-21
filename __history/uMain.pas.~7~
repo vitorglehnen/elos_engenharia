@@ -31,7 +31,6 @@ type
     Funcionrios1: TMenuItem;
     imgLogo: TImage;
     procedure Clientes1Click(Sender: TObject);
-    procedure Sair1Click(Sender: TObject);
   private
     { Private declarations }
 
@@ -50,11 +49,6 @@ implementation
 procedure TfrmMain.Clientes1Click(Sender: TObject);
 begin
   frmClientes := TFrmClientes.Create(nil);
-end;
-
-procedure TfrmMain.Sair1Click(Sender: TObject);
-begin
-  System.Halt(0);
 end;
 
 end.

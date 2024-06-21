@@ -1,0 +1,60 @@
+unit dmMain;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
+  FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
+  FireDAC.Comp.DataSet, Datasnap.Provider, FireDAC.Phys.IBBase;
+
+type
+  Tdm = class(TDataModule)
+    connection: TFDConnection;
+    fbclient: TFDPhysFBDriverLink;
+  private
+    { Private declarations }
+    procedure CarregaConfigConnectIni;
+  public
+    { Public declarations }
+
+    function ProxGenerator(aGenerator: String) : integer;
+  end;
+
+var
+  dm: Tdm;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+{ Tdm }
+
+
+{ Tdm }
+
+procedure Tdm.CarregaConfigConnectIni;
+var ConnectIni : TIniFile;
+begin
+
+end;
+
+function Tdm.ProxGenerator(aGenerator: String) : integer;
+var aQuery : TFDQuery;
+begin
+  aQuery := TFDQuery.Create(nil);
+  aQuery.Connection := connection;
+
+  try
+    aQuery.Open('SELECT FIRST 1 GEN_ID(' + aGenerator + ', 0) FROM rdb$database');
+    Result := aQuery.Fields[0].AsInteger;
+  finally
+    FreeAndNil(aQuery);
+  end;
+end;
+
+end.

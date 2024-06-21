@@ -21,12 +21,11 @@ uses
   Vcl.TabNotBk,
   Vcl.Buttons,
   Vcl.DBCtrls,
-  dmClientes,
+  dmMain,
   Vcl.CategoryButtons,
   Vcl.CheckLst,
   ShellAPI,
-  uReqUteis,
-  System.JSON;
+  uReqUteis, System.JSON;
 
 type
   TfrmClientes = class(TForm)
@@ -65,7 +64,7 @@ type
     chkInativo: TDBCheckBox;
     cbEstadosCad: TComboBox;
     cbCidadesCad: TComboBox;
-    dbnavCliente: TDBNavigator;
+    DBNavigator1: TDBNavigator;
     DBEdit1: TDBEdit;
     lblFone: TLabel;
     btnCoordenadaMaps: TBitBtn;
@@ -118,7 +117,7 @@ var
 implementation
 
 uses
-  System.SysUtils, dmMain;
+  System.SysUtils;
 
 {$R *.dfm}
 
@@ -191,7 +190,7 @@ end;
 
 procedure TfrmClientes.CarregaCidades;
 begin
-  dm_Clientes.qryCidades.Open('select cidades.*' +
+  dm.qryCidades.Open('select cidades.*' +
                       ' from cidades' +
                       ' join estados on es_ibge = ci_estado and es_uf =' +''''+ cbEstadosCad.Text +''''+
                       ' order by ci_nome');
@@ -209,12 +208,12 @@ begin
     end;
   end;
 
-  dm_Clientes.qryCidades.Close;
+  dm.qryCidades.Close;
 end;
 
 procedure TfrmClientes.CarregaEstados;
 begin
-  dm_Clientes.qryEstados.Open;
+  dm.qryEstados.Open;
 
   with FDSEstados do
   begin
@@ -226,18 +225,18 @@ begin
     end;
   end;
 
-  dm_Clientes.qryEstados.Close;
+  dm.qryEstados.Close;
 end;
 
 procedure TfrmClientes.cbCidadesCadChange(Sender: TObject);
 begin
-  FDSClientes.Edit;
+  dm.dsClientes.DataSet.Edit;
 end;
 
 procedure TfrmClientes.cbEstadosCadChange(Sender: TObject);
 begin
   CarregaCidades;
-  FDSClientes.Edit;
+  dm.dsClientes.DataSet.Edit;
 end;
 
 procedure TfrmClientes.dbgConsultaDblClick(Sender: TObject);
@@ -284,17 +283,17 @@ end;
 procedure TfrmClientes.FormCreate(Sender: TObject);
 begin
   //Datasets
-  FDSClientes := dm_Clientes.dsClientes.DataSet;
-  FDSEstados  := dm_Clientes.dsEstados.DataSet;
-  FDSCidades  := dm_Clientes.dsCidades.DataSet;
+  FDSClientes := DM.dsClientes.DataSet;
+  FDSEstados  := DM.dsEstados.DataSet;
+  FDSCidades  := DM.dsCidades.DataSet;
 
   FIBGECidades := TStringList.Create;
 
   //Eventos da query de clientes
-  dm_Clientes.qryClientes.AfterScroll := DsClientesAfterScroll;
-  dm_Clientes.qryClientes.AfterInsert := DsClientesAfterInsert;
-  dm_Clientes.qryClientes.BeforePost  := DsClientesBeforePost;
-  dm_Clientes.qryClientes.AfterPost   := DsClientesAfterPost;
+  dm.qryClientes.AfterScroll := DsClientesAfterScroll;
+  dm.qryClientes.AfterInsert := DsClientesAfterInsert;
+  dm.qryClientes.BeforePost  := DsClientesBeforePost;
+  dm.qryClientes.AfterPost   := DsClientesAfterPost;
 
   //Preenche os combobox's
   CarregaEstados;
@@ -305,10 +304,10 @@ procedure TfrmClientes.FormShow(Sender: TObject);
 begin
   ntbPrincipal.PageIndex := 0;
   TDrawGrid(dbgConsulta).ScrollBars := ssVertical;
-  DsClientesAfterScroll(dm_Clientes.dsClientes.DataSet);
+  DsClientesAfterScroll(dm.dsClientes.DataSet);
 
   {$REGION 'Preenche cidades da consulta'}
-    dm_Clientes.qryCidades.Open('select distinct(ci_ibge), ci_nome, ci_estado '+
+    dm.qryCidades.Open('select distinct(ci_ibge), ci_nome, ci_estado '+
                         'from cidades '+
                         'join clientes on cl_cidade = ci_ibge '+
                         'order by 1');
@@ -318,7 +317,7 @@ begin
 
       FDSCidades.Next;
     end;
-  {$ENDREGION}
+    {$ENDREGION}
 end;
 
 procedure TfrmClientes.MontaFiltroConsulta;
@@ -395,7 +394,7 @@ begin
     vWhereSql := ' WHERE ' + vWhereSql;
   end;
 
-  dm_Clientes.qryClientes.SQL.Text := 'select * '+
+  dm.qryClientes.SQL.Text := 'select * '+
                               'from clientes '+
                               'join cidades on ci_ibge = cl_cidade '+
                               'join estados on es_ibge = ci_estado' + vWhereSql;

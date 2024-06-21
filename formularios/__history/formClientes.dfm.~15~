@@ -69,7 +69,6 @@ object frmClientes: TfrmClientes
             Width = 610
             Height = 486
             Align = alClient
-            DataSource = dm_Clientes.dsClientes
             DrawingStyle = gdsGradient
             Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
             TabOrder = 0
@@ -332,7 +331,6 @@ object frmClientes: TfrmClientes
             Top = 0
             Width = 620
             Height = 42
-            DataSource = dm_Clientes.dsClientes
             VisibleButtons = [nbInsert, nbDelete, nbPost, nbCancel]
             Align = alClient
             TabOrder = 0
@@ -345,7 +343,6 @@ object frmClientes: TfrmClientes
           Width = 610
           Height = 23
           DataField = 'CL_NOME'
-          DataSource = dm_Clientes.dsClientes
           TabOrder = 0
         end
         object edtCodCad: TDBEdit
@@ -355,7 +352,6 @@ object frmClientes: TfrmClientes
           Height = 23
           TabStop = False
           DataField = 'CL_CODIGO'
-          DataSource = dm_Clientes.dsClientes
           Enabled = False
           ReadOnly = True
           TabOrder = 6
@@ -363,11 +359,9 @@ object frmClientes: TfrmClientes
         object DBEdit3: TDBEdit
           Left = 5
           Top = 201
-          Width = 115
+          Width = 117
           Height = 23
           DataField = 'CL_CPF'
-          DataSource = dm_Clientes.dsClientes
-          MaxLength = 14
           TabOrder = 1
         end
         object gpbEnderecoCad: TGroupBox
@@ -439,7 +433,6 @@ object frmClientes: TfrmClientes
             Width = 350
             Height = 23
             DataField = 'CL_RUA'
-            DataSource = dm_Clientes.dsClientes
             TabOrder = 0
           end
           object edtNroCad: TDBEdit
@@ -448,7 +441,6 @@ object frmClientes: TfrmClientes
             Width = 56
             Height = 23
             DataField = 'CL_NRO'
-            DataSource = dm_Clientes.dsClientes
             TabOrder = 3
           end
           object edtComplementoCad: TDBEdit
@@ -457,7 +449,6 @@ object frmClientes: TfrmClientes
             Width = 157
             Height = 23
             DataField = 'CL_COMPLEMENTO'
-            DataSource = dm_Clientes.dsClientes
             TabOrder = 4
           end
           object edtCoordenadasCad: TDBEdit
@@ -466,7 +457,6 @@ object frmClientes: TfrmClientes
             Width = 548
             Height = 23
             DataField = 'CL_COORDENADAS'
-            DataSource = dm_Clientes.dsClientes
             TabOrder = 5
           end
           object cbEstadosCad: TComboBox
@@ -540,7 +530,6 @@ object frmClientes: TfrmClientes
             Width = 106
             Height = 23
             DataField = 'CL_CEP'
-            DataSource = dm_Clientes.dsClientes
             MaxLength = 9
             TabOrder = 7
           end
@@ -597,29 +586,24 @@ object frmClientes: TfrmClientes
             Width = 125
             Height = 23
             DataField = 'CL_BAIRRO'
-            DataSource = dm_Clientes.dsClientes
             TabOrder = 9
           end
         end
         object edtDtCadastroCad: TDBEdit
           Left = 5
           Top = 322
-          Width = 117
+          Width = 119
           Height = 23
           TabStop = False
           DataField = 'CL_DTCADASTRO'
-          DataSource = dm_Clientes.dsClientes
-          MaxLength = 10
           TabOrder = 4
         end
         object edtDataNascCad: TDBEdit
           Left = 5
           Top = 246
-          Width = 87
+          Width = 89
           Height = 23
           DataField = 'CL_DTNASCIMENTO'
-          DataSource = dm_Clientes.dsClientes
-          MaxLength = 10
           TabOrder = 3
         end
         object chkInativo: TDBCheckBox
@@ -629,7 +613,6 @@ object frmClientes: TfrmClientes
           Height = 17
           Caption = 'Inativo'
           DataField = 'CL_INATIVO'
-          DataSource = dm_Clientes.dsClientes
           TabOrder = 8
           ValueChecked = 'S'
           ValueUnchecked = 'N'
@@ -637,11 +620,9 @@ object frmClientes: TfrmClientes
         object DBEdit1: TDBEdit
           Left = 149
           Top = 201
-          Width = 96
+          Width = 100
           Height = 23
           DataField = 'CL_FONE'
-          DataSource = dm_Clientes.dsClientes
-          MaxLength = 15
           TabOrder = 2
         end
         object btnWhatsApp: TBitBtn

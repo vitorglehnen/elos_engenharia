@@ -308,7 +308,7 @@ begin
   DsClientesAfterScroll(dm_Clientes.dsClientes.DataSet);
 
   {$REGION 'Preenche cidades da consulta'}
-    dm_Clientes.qryCidades.Open('select distinct(ci_ibge), ci_nome, ci_estado '+
+    dm_Clientesdm.qryCidades.Open('select distinct(ci_ibge), ci_nome, ci_estado '+
                         'from cidades '+
                         'join clientes on cl_cidade = ci_ibge '+
                         'order by 1');
@@ -318,7 +318,7 @@ begin
 
       FDSCidades.Next;
     end;
-  {$ENDREGION}
+    {$ENDREGION}
 end;
 
 procedure TfrmClientes.MontaFiltroConsulta;

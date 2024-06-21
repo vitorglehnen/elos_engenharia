@@ -9,6 +9,7 @@ object dm: Tdm
       'Password=masterkey'
       'Port=3050'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Left = 80
     Top = 344
