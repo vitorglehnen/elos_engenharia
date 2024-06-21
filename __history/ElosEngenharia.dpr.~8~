@@ -6,9 +6,7 @@ uses
   formClientes in 'formularios\formClientes.pas' {frmClientes},
   dmMain in 'data modules\dmMain.pas' {dm: TDataModule},
   uReqUteis in 'api\uReqUteis.pas',
-  dmClientes in 'data modules\dmClientes.pas' {dm_Clientes: TDataModule},
-  formFuncionarios in 'formularios\formFuncionarios.pas' {frmFuncionarios},
-  dmFuncionarios in 'data modules\dmFuncionarios.pas' {dm_funcionarios: TDataModule};
+  dmClientes in 'data modules\dmClientes.pas' {dm_Clientes: TDataModule};
 
 {$R *.res}
 
@@ -18,6 +16,5 @@ begin
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(Tdm_Clientes, dm_Clientes);
-  Application.CreateForm(Tdm_funcionarios, dm_funcionarios);
   Application.Run;
 end.

@@ -45,7 +45,7 @@ object dm_Clientes: Tdm_Clientes
       FieldName = 'CL_FONE'
       Origin = 'CL_FONE'
       ProviderFlags = [pfInUpdate]
-      EditMask = '(99) 99999-9999;0;_'
+      EditMask = '(99) 90000-0000;0;_'
       Size = 15
     end
     object qryClientesCL_INATIVO: TWideStringField

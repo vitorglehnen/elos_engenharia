@@ -449,7 +449,7 @@ object frmClientes: TfrmClientes
             Height = 23
             DataField = 'CL_NRO'
             DataSource = dm_Clientes.dsClientes
-            TabOrder = 2
+            TabOrder = 3
           end
           object edtComplementoCad: TDBEdit
             Left = 212
@@ -467,7 +467,7 @@ object frmClientes: TfrmClientes
             Height = 23
             DataField = 'CL_COORDENADAS'
             DataSource = dm_Clientes.dsClientes
-            TabOrder = 7
+            TabOrder = 5
           end
           object cbEstadosCad: TComboBox
             Left = 391
@@ -475,7 +475,7 @@ object frmClientes: TfrmClientes
             Width = 49
             Height = 23
             Style = csDropDownList
-            TabOrder = 5
+            TabOrder = 1
             OnChange = cbEstadosCadChange
           end
           object cbCidadesCad: TComboBox
@@ -484,7 +484,7 @@ object frmClientes: TfrmClientes
             Width = 149
             Height = 23
             Style = csDropDownList
-            TabOrder = 6
+            TabOrder = 2
             OnChange = cbCidadesCadChange
           end
           object btnCoordenadaMaps: TBitBtn
@@ -531,7 +531,7 @@ object frmClientes: TfrmClientes
               FF00FFFFFF00}
             ParentShowHint = False
             ShowHint = True
-            TabOrder = 8
+            TabOrder = 6
             OnClick = btnCoordenadaMapsClick
           end
           object edtCepCad: TDBEdit
@@ -542,7 +542,7 @@ object frmClientes: TfrmClientes
             DataField = 'CL_CEP'
             DataSource = dm_Clientes.dsClientes
             MaxLength = 9
-            TabOrder = 1
+            TabOrder = 7
           end
           object btnCepMaps: TBitBtn
             Left = 503
@@ -588,7 +588,7 @@ object frmClientes: TfrmClientes
               FF00FFFFFF00}
             ParentShowHint = False
             ShowHint = True
-            TabOrder = 9
+            TabOrder = 8
             OnClick = btnCepMapsClick
           end
           object edtBairroCad: TDBEdit
@@ -598,7 +598,7 @@ object frmClientes: TfrmClientes
             Height = 23
             DataField = 'CL_BAIRRO'
             DataSource = dm_Clientes.dsClientes
-            TabOrder = 3
+            TabOrder = 9
           end
         end
         object edtDtCadastroCad: TDBEdit
@@ -637,7 +637,7 @@ object frmClientes: TfrmClientes
         object DBEdit1: TDBEdit
           Left = 149
           Top = 201
-          Width = 100
+          Width = 96
           Height = 23
           DataField = 'CL_FONE'
           DataSource = dm_Clientes.dsClientes
@@ -649,7 +649,7 @@ object frmClientes: TfrmClientes
           Top = 201
           Width = 26
           Height = 23
-          Hint = 'Acessar WhatsApp'
+          Hint = 'Pesquisar CEP'
           Glyph.Data = {
             42040000424D4204000000000000420000002800000010000000100000000100
             20000300000000040000590000005900000000000000000000000000FF0000FF

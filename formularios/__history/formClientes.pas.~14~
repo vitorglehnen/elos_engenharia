@@ -136,12 +136,10 @@ begin
     with FDSClientes do
     begin
       if FDSClientes.State <> dsEdit then
-        FDSClientes.Edit;
+      FDSClientes.Edit;
 
       cbEstadosCad.ItemIndex := cbEstadosCad.Items.IndexOf(vJsonResponseCep.GetValue('uf').Value);
-      cbEstadosCadChange(cbEstadosCad);
       cbCidadesCad.ItemIndex := cbCidadesCad.Items.IndexOf(RemoveAcentos(vJsonResponseCep.GetValue('localidade').Value));
-
       FDSClientes.FieldByName('CL_COMPLEMENTO').AsString := vJsonResponseCep.GetValue('complemento').Value;
       FDSClientes.FieldByName('CL_BAIRRO').AsString := vJsonResponseCep.GetValue('bairro').Value;
       FDSClientes.FieldByName('CL_RUA').AsString := vJsonResponseCep.GetValue('logradouro').Value;

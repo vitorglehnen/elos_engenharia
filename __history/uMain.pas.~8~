@@ -15,12 +15,8 @@ uses
   Vcl.ExtCtrls,
   Vcl.Menus,
   formClientes,
-  formFuncionarios,
-  Vcl.Imaging.pngimage,
-  System.Actions,
-  Vcl.ActnList,
-  Vcl.PlatformDefaultStyleActnCtrls,
-  Vcl.ActnMan;
+  Vcl.Imaging.pngimage, System.Actions, Vcl.ActnList,
+  Vcl.PlatformDefaultStyleActnCtrls, Vcl.ActnMan;
 
 type
   TfrmMain = class(TForm)
@@ -32,16 +28,14 @@ type
     Sair1: TMenuItem;
     Clientes1: TMenuItem;
     Projetos1: TMenuItem;
-    Funcionarios1: TMenuItem;
+    Funcionrios1: TMenuItem;
     imgLogo: TImage;
     procedure Clientes1Click(Sender: TObject);
     procedure Sair1Click(Sender: TObject);
-    procedure Funcionarios1Click(Sender: TObject);
   private
     { Private declarations }
 
-    frmClientes     : TfrmClientes;
-    frmFuncionarios : TfrmFuncionarios;
+    frmClientes : TfrmClientes;
   public
     { Public declarations }
   end;
@@ -56,17 +50,6 @@ implementation
 procedure TfrmMain.Clientes1Click(Sender: TObject);
 begin
   frmClientes := TFrmClientes.Create(nil);
-end;
-
-procedure TfrmMain.Funcionarios1Click(Sender: TObject);
-begin
-  frmFuncionarios := TFrmFuncionarios.Create(nil);
-
-  try
-    frmFuncionarios.ShowModal;
-  finally
-    frmFuncionarios.Free;
-  end;
 end;
 
 procedure TfrmMain.Sair1Click(Sender: TObject);
