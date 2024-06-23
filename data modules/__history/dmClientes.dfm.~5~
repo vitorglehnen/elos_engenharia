@@ -172,7 +172,6 @@ object dm_Clientes: Tdm_Clientes
     end
   end
   object qryCidades: TFDQuery
-    Active = True
     Connection = dm.connection
     SQL.Strings = (
       'select *'
@@ -203,7 +202,6 @@ object dm_Clientes: Tdm_Clientes
     Top = 64
   end
   object qryEstados: TFDQuery
-    Active = True
     Connection = dm.connection
     SQL.Strings = (
       'select *'

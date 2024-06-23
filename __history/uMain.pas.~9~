@@ -33,6 +33,7 @@ type
     Clientes1: TMenuItem;
     Projetos1: TMenuItem;
     Funcionarios1: TMenuItem;
+    imgLogo: TImage;
     procedure Clientes1Click(Sender: TObject);
     procedure Sair1Click(Sender: TObject);
     procedure Funcionarios1Click(Sender: TObject);
@@ -49,9 +50,6 @@ var
   frmMain: TfrmMain;
 
 implementation
-
-uses
-  formLogin;
 
 {$R *.dfm}
 

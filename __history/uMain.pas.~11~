@@ -36,6 +36,7 @@ type
     procedure Clientes1Click(Sender: TObject);
     procedure Sair1Click(Sender: TObject);
     procedure Funcionarios1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
 
@@ -58,6 +59,11 @@ uses
 procedure TfrmMain.Clientes1Click(Sender: TObject);
 begin
   frmClientes := TFrmClientes.Create(nil);
+end;
+
+procedure TfrmMain.FormShow(Sender: TObject);
+begin
+  frmLogin.close;
 end;
 
 procedure TfrmMain.Funcionarios1Click(Sender: TObject);

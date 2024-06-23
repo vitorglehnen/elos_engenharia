@@ -21,7 +21,7 @@ begin
   TStyleManager.TrySetStyle('Glossy');
 
   Application.CreateForm(TfrmLogin, frmLogin);
-  Application.CreateForm(TfrmMain, frmMain);
+  frmLogin.ShowModal;
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(Tdm_Clientes, dm_Clientes);
   Application.CreateForm(Tdm_funcionarios, dm_funcionarios);

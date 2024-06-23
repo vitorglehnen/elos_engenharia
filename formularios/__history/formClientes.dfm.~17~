@@ -23,7 +23,6 @@ object frmClientes: TfrmClientes
     Width = 628
     Height = 712
     Align = alClient
-    PageIndex = 1
     TabFont.Charset = DEFAULT_CHARSET
     TabFont.Color = clBtnText
     TabFont.Height = -15
@@ -31,21 +30,28 @@ object frmClientes: TfrmClientes
     TabFont.Style = []
     TabOrder = 0
     OnChange = ntbPrincipalChange
+    ExplicitWidth = 624
+    ExplicitHeight = 711
     object TTabPage
       Left = 4
-      Top = 26
+      Top = 31
       Caption = 'Consulta'
+      ExplicitTop = 26
+      ExplicitWidth = 616
+      ExplicitHeight = 681
       object pnlPrincipalConsulta: TPanel
         Left = 0
         Top = 0
         Width = 620
-        Height = 682
+        Height = 677
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 616
+        ExplicitHeight = 681
         object pnlGrid: TPanel
           Left = 0
-          Top = 186
+          Top = 181
           Width = 620
           Height = 496
           Align = alBottom
@@ -55,6 +61,8 @@ object frmClientes: TfrmClientes
           Padding.Right = 5
           Padding.Bottom = 5
           TabOrder = 0
+          ExplicitTop = 185
+          ExplicitWidth = 616
           object dbgConsulta: TDBGrid
             Left = 5
             Top = 5
@@ -167,10 +175,12 @@ object frmClientes: TfrmClientes
           Left = 0
           Top = 0
           Width = 620
-          Height = 186
+          Height = 181
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 1
+          ExplicitWidth = 616
+          ExplicitHeight = 185
           object lblCidadeConsulta: TLabel
             Left = 368
             Top = 29
@@ -223,7 +233,7 @@ object frmClientes: TfrmClientes
             Top = 48
             Width = 241
             Height = 79
-            ItemHeight = 15
+            ItemHeight = 17
             TabOrder = 3
           end
           object edtDtIniConsulta: TMaskEdit
@@ -251,17 +261,21 @@ object frmClientes: TfrmClientes
     end
     object TTabPage
       Left = 4
-      Top = 26
+      Top = 31
       Caption = 'Cadastro'
+      ExplicitTop = 26
+      ExplicitWidth = 616
+      ExplicitHeight = 681
       object pnlPrincipalCadastro: TPanel
         Left = 0
         Top = 0
         Width = 620
-        Height = 682
+        Height = 677
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
-        StyleElements = [seFont, seClient]
+        ExplicitWidth = 616
+        ExplicitHeight = 681
         object lblNomeCad: TLabel
           Left = 5
           Top = 140
@@ -306,12 +320,24 @@ object frmClientes: TfrmClientes
         end
         object pnlBtnCrud: TPanel
           Left = 0
-          Top = 42
+          Top = 0
           Width = 620
           Height = 42
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 5
+          ExplicitWidth = 616
+          object dbnavCliente: TDBNavigator
+            Left = 0
+            Top = 0
+            Width = 620
+            Height = 42
+            DataSource = dm_Clientes.dsClientes
+            VisibleButtons = [nbInsert, nbDelete, nbPost, nbCancel]
+            Align = alClient
+            TabOrder = 0
+            ExplicitWidth = 616
+          end
         end
         object edtNomeCad: TDBEdit
           Left = 5
@@ -613,7 +639,6 @@ object frmClientes: TfrmClientes
           Top = 201
           Width = 100
           Height = 23
-          BevelInner = bvNone
           DataField = 'CL_FONE'
           DataSource = dm_Clientes.dsClientes
           MaxLength = 15
@@ -665,16 +690,6 @@ object frmClientes: TfrmClientes
           ShowHint = True
           TabOrder = 9
           OnClick = btnWhatsAppClick
-        end
-        object jvdbnvgtrCliente: TJvDBNavigator
-          Left = 0
-          Top = 0
-          Width = 620
-          Height = 42
-          DataSource = dm_Clientes.dsClientes
-          VisibleButtons = [nbInsert, nbDelete, nbPost, nbCancel]
-          Align = alTop
-          TabOrder = 10
         end
       end
     end

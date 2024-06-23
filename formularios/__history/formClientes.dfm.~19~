@@ -33,19 +33,22 @@ object frmClientes: TfrmClientes
     OnChange = ntbPrincipalChange
     object TTabPage
       Left = 4
-      Top = 26
+      Top = 31
       Caption = 'Consulta'
+      ExplicitTop = 26
+      ExplicitHeight = 682
       object pnlPrincipalConsulta: TPanel
         Left = 0
         Top = 0
         Width = 620
-        Height = 682
+        Height = 677
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitHeight = 682
         object pnlGrid: TPanel
           Left = 0
-          Top = 186
+          Top = 181
           Width = 620
           Height = 496
           Align = alBottom
@@ -55,6 +58,7 @@ object frmClientes: TfrmClientes
           Padding.Right = 5
           Padding.Bottom = 5
           TabOrder = 0
+          ExplicitTop = 186
           object dbgConsulta: TDBGrid
             Left = 5
             Top = 5
@@ -167,10 +171,11 @@ object frmClientes: TfrmClientes
           Left = 0
           Top = 0
           Width = 620
-          Height = 186
+          Height = 181
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 1
+          ExplicitHeight = 186
           object lblCidadeConsulta: TLabel
             Left = 368
             Top = 29
@@ -251,17 +256,20 @@ object frmClientes: TfrmClientes
     end
     object TTabPage
       Left = 4
-      Top = 26
+      Top = 31
       Caption = 'Cadastro'
+      ExplicitTop = 26
+      ExplicitHeight = 682
       object pnlPrincipalCadastro: TPanel
         Left = 0
         Top = 0
         Width = 620
-        Height = 682
+        Height = 677
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
         StyleElements = [seFont, seClient]
+        ExplicitHeight = 682
         object lblNomeCad: TLabel
           Left = 5
           Top = 140
@@ -312,6 +320,7 @@ object frmClientes: TfrmClientes
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 5
+          ExplicitTop = 0
         end
         object edtNomeCad: TDBEdit
           Left = 5
@@ -675,6 +684,7 @@ object frmClientes: TfrmClientes
           VisibleButtons = [nbInsert, nbDelete, nbPost, nbCancel]
           Align = alTop
           TabOrder = 10
+          ExplicitWidth = 619
         end
       end
     end

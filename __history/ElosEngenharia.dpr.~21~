@@ -2,6 +2,8 @@ program ElosEngenharia;
 
 uses
   Vcl.Forms,
+  Vcl.StdCtrls,
+  System.Classes,
   uMain in 'uMain.pas' {frmMain},
   formClientes in 'formularios\formClientes.pas' {frmClientes},
   dmMain in 'data modules\dmMain.pas' {dm: TDataModule},
@@ -21,10 +23,18 @@ begin
   TStyleManager.TrySetStyle('Glossy');
 
   Application.CreateForm(TfrmLogin, frmLogin);
-  Application.CreateForm(TfrmMain, frmMain);
+  frmLogin.ShowModal;
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(Tdm_Clientes, dm_Clientes);
   Application.CreateForm(Tdm_funcionarios, dm_funcionarios);
 
-  Application.Run;
+  if frmLogin.ModalResult = mrOk then
+  begin
+    Application.CreateForm(TFrmMain, frmMain);
+    Application.Run;
+  end
+  else
+  begin
+    Application.Terminate;
+  end;
 end.

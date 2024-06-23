@@ -50,9 +50,6 @@ var
 
 implementation
 
-uses
-  formLogin;
-
 {$R *.dfm}
 
 procedure TfrmMain.Clientes1Click(Sender: TObject);
