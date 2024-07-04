@@ -47,6 +47,10 @@ object frmMain: TfrmMain
         Caption = 'Projetos'
         ShortCut = 16464
       end
+      object Situacao1: TMenuItem
+        Caption = 'Situa'#231#227'o'
+        ShortCut = 16467
+      end
       object Funcionarios1: TMenuItem
         Caption = 'Funcion'#225'rios'
         ShortCut = 16454

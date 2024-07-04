@@ -13,7 +13,6 @@ object frmLogin: TfrmLogin
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
-  OnShow = FormShow
   TextHeight = 15
   object pnlPrincipal: TPanel
     Left = 0
@@ -23,10 +22,6 @@ object frmLogin: TfrmLogin
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitLeft = 96
-    ExplicitTop = 101
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object edtSenha: TLabeledEdit
       Left = 174
       Top = 71

@@ -20,11 +20,9 @@ begin
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Glossy');
 
-  Application.CreateForm(TfrmLogin, frmLogin);
-  Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(Tdm, dm);
-  Application.CreateForm(Tdm_Clientes, dm_Clientes);
+  Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(Tdm_funcionarios, dm_funcionarios);
-
+  Application.CreateForm(Tdm_Clientes, dm_Clientes);
   Application.Run;
 end.

@@ -57,18 +57,13 @@ begin
   with dbgConsulta.Canvas do
   begin
     if dbgConsulta.DataSource.DataSet.FieldByName('US_INATIVO').AsBoolean then
-      Brush.Color := clRed // Cor para inativos
+      Brush.Color := RGB(255, 102, 102) // Vermelho claro
     else if dbgConsulta.DataSource.DataSet.FieldByName('US_ADMIN').AsBoolean then
-      Brush.Color := clYellow // Cor para administradores
-    else
-      Brush.Color := clWindow; // Cor padrão
+      Brush.Color := RGB(255, 165, 0);
 
     FillRect(Rect);
-    Font.Color := clWindowText; // Cor do texto
-    TextOut(Rect.Left + 2, Rect.Top + 2, Column.Field.DisplayText);
   end;
 
-  // Chama o método padrão de desenho de célula
   dbgConsulta.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 

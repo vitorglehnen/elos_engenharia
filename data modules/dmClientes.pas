@@ -42,6 +42,21 @@ type
     qryEstadosES_NOME: TWideStringField;
     qryEstadosES_UF: TWideStringField;
     dsEstados: TDataSource;
+    qryProjetos: TFDQuery;
+    dsProjetos: TDataSource;
+    qryProjetosPJ_CODIGO: TIntegerField;
+    qryProjetosPJ_CLIENTE: TIntegerField;
+    qryProjetosPJ_MINHACASAMINHAVIDA: TBooleanField;
+    qryProjetosPJ_TAMANHO: TFMTBCDField;
+    qryProjetosPJ_VALOR: TFMTBCDField;
+    qryProjetosPJ_SITUACAO: TIntegerField;
+    qryProjetosPJ_COORDENADAS: TWideStringField;
+    qryProjetosPJ_DATAINICIO: TDateField;
+    qryProjetosPJ_DATAPREVISAO: TDateField;
+    qryProjetosPJ_FINALIZADO: TBooleanField;
+    qryProjetosST_CODIGO: TIntegerField;
+    qryProjetosST_DESCRICAO: TWideStringField;
+    qryProjetosST_COR: TWideStringField;
   private
     { Private declarations }
   public

@@ -33,6 +33,7 @@ type
     Clientes1: TMenuItem;
     Projetos1: TMenuItem;
     Funcionarios1: TMenuItem;
+    Situacao1: TMenuItem;
     procedure Clientes1Click(Sender: TObject);
     procedure Sair1Click(Sender: TObject);
     procedure Funcionarios1Click(Sender: TObject);

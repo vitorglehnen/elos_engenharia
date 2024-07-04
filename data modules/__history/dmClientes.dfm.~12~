@@ -1,0 +1,323 @@
+object dm_Clientes: Tdm_Clientes
+  Height = 480
+  Width = 640
+  object dsClientes: TDataSource
+    DataSet = qryClientes
+    Left = 16
+    Top = 64
+  end
+  object qryClientes: TFDQuery
+    Connection = dm.connection
+    SQL.Strings = (
+      'select *'
+      'from clientes'
+      'join cidades on ci_ibge = cl_cidade'
+      'join estados on es_ibge = ci_estado')
+    Left = 16
+    Top = 8
+    object qryClientesCL_CODIGO: TIntegerField
+      AutoGenerateValue = arAutoInc
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'CL_CODIGO'
+      Origin = 'CL_CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryClientesCL_NOME: TWideStringField
+      DisplayLabel = 'Nome'
+      FieldName = 'CL_NOME'
+      Origin = 'CL_NOME'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+      Size = 200
+    end
+    object qryClientesCL_CPF: TWideStringField
+      DisplayLabel = 'CPF'
+      FieldName = 'CL_CPF'
+      Origin = 'CL_CPF'
+      ProviderFlags = [pfInUpdate]
+      EditMask = '999.999.999-99;0;_'
+      Size = 11
+    end
+    object qryClientesCL_FONE: TWideStringField
+      DisplayLabel = 'Telefone'
+      FieldName = 'CL_FONE'
+      Origin = 'CL_FONE'
+      ProviderFlags = [pfInUpdate]
+      EditMask = '(99) 99999-9999;0;_'
+      Size = 15
+    end
+    object qryClientesCL_INATIVO: TWideStringField
+      DisplayLabel = 'Inativo'
+      FieldName = 'CL_INATIVO'
+      Origin = 'CL_INATIVO'
+      ProviderFlags = [pfInUpdate]
+      FixedChar = True
+      Size = 1
+    end
+    object qryClientesCL_DTCADASTRO: TDateField
+      DisplayLabel = 'Data de cadastro'
+      FieldName = 'CL_DTCADASTRO'
+      Origin = 'CL_DTCADASTRO'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryClientesCL_DTNASCIMENTO: TDateField
+      DisplayLabel = 'Data de nascimento'
+      FieldName = 'CL_DTNASCIMENTO'
+      Origin = 'CL_DTNASCIMENTO'
+      ProviderFlags = [pfInUpdate]
+      EditMask = '!99/99/0000;1;_'
+    end
+    object qryClientesCL_CEP: TWideStringField
+      DisplayLabel = 'CEP'
+      FieldName = 'CL_CEP'
+      Origin = 'CL_CEP'
+      ProviderFlags = [pfInUpdate]
+    end
+    object qryClientesCL_RUA: TWideStringField
+      DisplayLabel = 'Rua'
+      FieldName = 'CL_RUA'
+      Origin = 'CL_RUA'
+      ProviderFlags = [pfInUpdate]
+      Size = 100
+    end
+    object qryClientesCL_NRO: TWideStringField
+      DisplayLabel = 'N'#250'mero'
+      FieldName = 'CL_NRO'
+      Origin = 'CL_NRO'
+      ProviderFlags = [pfInUpdate]
+    end
+    object qryClientesCL_COMPLEMENTO: TWideStringField
+      DisplayLabel = 'Complemento'
+      FieldName = 'CL_COMPLEMENTO'
+      Origin = 'CL_COMPLEMENTO'
+      ProviderFlags = [pfInUpdate]
+      Size = 30
+    end
+    object qryClientesCL_COORDENADAS: TWideStringField
+      DisplayLabel = 'Coordenadas'
+      FieldName = 'CL_COORDENADAS'
+      Origin = 'CL_COORDENADAS'
+      ProviderFlags = [pfInUpdate]
+      Size = 300
+    end
+    object qryClientesCL_CIDADE: TIntegerField
+      DisplayLabel = 'Cidade'
+      FieldName = 'CL_CIDADE'
+      Origin = 'CL_CIDADE'
+      ProviderFlags = [pfInUpdate]
+      Required = True
+    end
+    object qryClientesCL_BAIRRO: TWideStringField
+      DisplayLabel = 'Bairro'
+      FieldName = 'CL_BAIRRO'
+      Origin = 'CL_BAIRRO'
+      ProviderFlags = [pfInUpdate]
+      Size = 30
+    end
+    object qryClientesCI_IBGE: TIntegerField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'C'#243'digo IBGE da cidade'
+      FieldName = 'CI_IBGE'
+      Origin = 'CI_IBGE'
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = True
+    end
+    object qryClientesCI_NOME: TWideStringField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'Nome da cidade'
+      FieldName = 'CI_NOME'
+      Origin = 'CI_NOME'
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = True
+      Size = 150
+    end
+    object qryClientesCI_ESTADO: TIntegerField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'Estado da cidade'
+      FieldName = 'CI_ESTADO'
+      Origin = 'CI_ESTADO'
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = True
+    end
+    object qryClientesES_IBGE: TIntegerField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'C'#243'digo IBGE do estado'
+      FieldName = 'ES_IBGE'
+      Origin = 'ES_IBGE'
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = True
+    end
+    object qryClientesES_NOME: TWideStringField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'Nome do estado'
+      FieldName = 'ES_NOME'
+      Origin = 'ES_NOME'
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = True
+      Size = 100
+    end
+    object qryClientesES_UF: TWideStringField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'Sigla do estado'
+      FieldName = 'ES_UF'
+      Origin = 'ES_UF'
+      ProviderFlags = [pfInUpdate]
+      ReadOnly = True
+      FixedChar = True
+      Size = 2
+    end
+  end
+  object qryCidades: TFDQuery
+    Connection = dm.connection
+    SQL.Strings = (
+      'select *'
+      'from cidades'
+      'order by ci_nome')
+    Left = 128
+    Top = 8
+    object qryCidadesCI_IBGE: TIntegerField
+      FieldName = 'CI_IBGE'
+      Origin = 'CI_IBGE'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryCidadesCI_NOME: TWideStringField
+      FieldName = 'CI_NOME'
+      Origin = 'CI_NOME'
+      Required = True
+      Size = 150
+    end
+    object qryCidadesCI_ESTADO: TIntegerField
+      FieldName = 'CI_ESTADO'
+      Origin = 'CI_ESTADO'
+    end
+  end
+  object dsCidades: TDataSource
+    DataSet = qryCidades
+    Left = 128
+    Top = 64
+  end
+  object qryEstados: TFDQuery
+    Connection = dm.connection
+    SQL.Strings = (
+      'select *'
+      'from estados'
+      'order by es_nome')
+    Left = 240
+    Top = 8
+    object qryEstadosES_IBGE: TIntegerField
+      FieldName = 'ES_IBGE'
+      Origin = 'ES_IBGE'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryEstadosES_NOME: TWideStringField
+      FieldName = 'ES_NOME'
+      Origin = 'ES_NOME'
+      Size = 100
+    end
+    object qryEstadosES_UF: TWideStringField
+      FieldName = 'ES_UF'
+      Origin = 'ES_UF'
+      FixedChar = True
+      Size = 2
+    end
+  end
+  object dsEstados: TDataSource
+    DataSet = qryEstados
+    Left = 240
+    Top = 64
+  end
+  object qryProjetos: TFDQuery
+    MasterSource = dsClientes
+    MasterFields = 'CL_CODIGO'
+    Connection = dm.connection
+    SQL.Strings = (
+      'select *'
+      'from projetos'
+      'where pj_cliente = :cl_cliente')
+    Left = 352
+    Top = 8
+    ParamData = <
+      item
+        Name = 'CL_CLIENTE'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object qryProjetosPJ_CODIGO: TIntegerField
+      AutoGenerateValue = arAutoInc
+      DisplayLabel = 'C'#243'digo do projeto'
+      FieldName = 'PJ_CODIGO'
+      Origin = 'PJ_CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      DisplayFormat = 'C'#243'digo do projeto'
+    end
+    object qryProjetosPJ_CLIENTE: TIntegerField
+      DisplayLabel = 'C'#243'digo do cliente'
+      FieldName = 'PJ_CLIENTE'
+      Origin = 'PJ_CLIENTE'
+      Required = True
+      DisplayFormat = 'C'#243'digo do cliente'
+    end
+    object qryProjetosPJ_MINHACASAMINHAVIDA: TBooleanField
+      DisplayLabel = 'Minha casa minha vida'
+      FieldName = 'PJ_MINHACASAMINHAVIDA'
+      Origin = 'PJ_MINHACASAMINHAVIDA'
+    end
+    object qryProjetosPJ_TAMANHO: TFMTBCDField
+      DisplayLabel = 'Tamanho'
+      FieldName = 'PJ_TAMANHO'
+      Origin = 'PJ_TAMANHO'
+      DisplayFormat = 'Tamanho'
+      Precision = 18
+      Size = 2
+    end
+    object qryProjetosPJ_VALOR: TFMTBCDField
+      DisplayLabel = 'Valor'
+      FieldName = 'PJ_VALOR'
+      Origin = 'PJ_VALOR'
+      DisplayFormat = 'Valor'
+      Precision = 18
+      Size = 2
+    end
+    object qryProjetosPJ_SITUACAO: TIntegerField
+      DisplayLabel = 'Situa'#231#227'o'
+      FieldName = 'PJ_SITUACAO'
+      Origin = 'PJ_SITUACAO'
+      DisplayFormat = 'Situa'#231#227'o'
+    end
+    object qryProjetosPJ_COORDENADAS: TWideStringField
+      DisplayLabel = 'Coordenadas'
+      FieldName = 'PJ_COORDENADAS'
+      Origin = 'PJ_COORDENADAS'
+      Size = 250
+    end
+    object qryProjetosPJ_DATAINICIO: TDateField
+      DisplayLabel = 'Data de in'#237'cio'
+      FieldName = 'PJ_DATAINICIO'
+      Origin = 'PJ_DATAINICIO'
+      DisplayFormat = 'Data de in'#237'cio'
+    end
+    object qryProjetosPJ_DATAPREVISAO: TDateField
+      DisplayLabel = 'Data de previs'#227'o'
+      FieldName = 'PJ_DATAPREVISAO'
+      Origin = 'PJ_DATAPREVISAO'
+      DisplayFormat = 'Data de previs'#227'o'
+    end
+    object qryProjetosPJ_FINALIZADO: TBooleanField
+      DisplayLabel = 'Finalizado'
+      FieldName = 'PJ_FINALIZADO'
+      Origin = 'PJ_FINALIZADO'
+    end
+  end
+  object dsProjetos: TDataSource
+    DataSet = qryProjetos
+    Left = 352
+    Top = 64
+  end
+end

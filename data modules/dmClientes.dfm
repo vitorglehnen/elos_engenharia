@@ -7,7 +7,6 @@ object dm_Clientes: Tdm_Clientes
     Top = 64
   end
   object qryClientes: TFDQuery
-    Active = True
     Connection = dm.connection
     SQL.Strings = (
       'select *'
@@ -172,7 +171,6 @@ object dm_Clientes: Tdm_Clientes
     end
   end
   object qryCidades: TFDQuery
-    Active = True
     Connection = dm.connection
     SQL.Strings = (
       'select *'
@@ -203,7 +201,6 @@ object dm_Clientes: Tdm_Clientes
     Top = 64
   end
   object qryEstados: TFDQuery
-    Active = True
     Connection = dm.connection
     SQL.Strings = (
       'select *'
@@ -232,6 +229,118 @@ object dm_Clientes: Tdm_Clientes
   object dsEstados: TDataSource
     DataSet = qryEstados
     Left = 240
+    Top = 64
+  end
+  object qryProjetos: TFDQuery
+    MasterSource = dsClientes
+    MasterFields = 'CL_CODIGO'
+    Connection = dm.connection
+    SQL.Strings = (
+      'select pj.*, st.* '
+      'from projetos pj'
+      'inner join situacao st on st.st_codigo = pj.pj_situacao'
+      'where pj.pj_cliente = :cl_codigo')
+    Left = 352
+    Top = 8
+    ParamData = <
+      item
+        Name = 'CL_CODIGO'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object qryProjetosPJ_CODIGO: TIntegerField
+      AutoGenerateValue = arAutoInc
+      DisplayLabel = 'C'#243'digo do projeto'
+      FieldName = 'PJ_CODIGO'
+      Origin = 'PJ_CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryProjetosPJ_CLIENTE: TIntegerField
+      DisplayLabel = 'C'#243'digo do cliente'
+      FieldName = 'PJ_CLIENTE'
+      Origin = 'PJ_CLIENTE'
+      Required = True
+    end
+    object qryProjetosPJ_MINHACASAMINHAVIDA: TBooleanField
+      DefaultExpression = 'False'
+      DisplayLabel = 'Minha casa minha vida'
+      FieldName = 'PJ_MINHACASAMINHAVIDA'
+      Origin = 'PJ_MINHACASAMINHAVIDA'
+    end
+    object qryProjetosPJ_TAMANHO: TFMTBCDField
+      DisplayLabel = 'Tamanho'
+      FieldName = 'PJ_TAMANHO'
+      Origin = 'PJ_TAMANHO'
+      Precision = 18
+      Size = 2
+    end
+    object qryProjetosPJ_VALOR: TFMTBCDField
+      DisplayLabel = 'Valor'
+      FieldName = 'PJ_VALOR'
+      Origin = 'PJ_VALOR'
+      DisplayFormat = 'R$ #,##0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qryProjetosPJ_SITUACAO: TIntegerField
+      DisplayLabel = 'Situa'#231#227'o'
+      FieldName = 'PJ_SITUACAO'
+      Origin = 'PJ_SITUACAO'
+    end
+    object qryProjetosPJ_COORDENADAS: TWideStringField
+      DisplayLabel = 'Coordenadas'
+      FieldName = 'PJ_COORDENADAS'
+      Origin = 'PJ_COORDENADAS'
+      Size = 250
+    end
+    object qryProjetosPJ_DATAINICIO: TDateField
+      DisplayLabel = 'Data de in'#237'cio'
+      FieldName = 'PJ_DATAINICIO'
+      Origin = 'PJ_DATAINICIO'
+    end
+    object qryProjetosPJ_DATAPREVISAO: TDateField
+      DisplayLabel = 'Data de previs'#227'o'
+      FieldName = 'PJ_DATAPREVISAO'
+      Origin = 'PJ_DATAPREVISAO'
+    end
+    object qryProjetosPJ_FINALIZADO: TBooleanField
+      DefaultExpression = 'False'
+      DisplayLabel = 'Finalizado'
+      FieldName = 'PJ_FINALIZADO'
+      Origin = 'PJ_FINALIZADO'
+    end
+    object qryProjetosST_CODIGO: TIntegerField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'C'#243'digo da situa'#231#227'o'
+      FieldName = 'ST_CODIGO'
+      Origin = 'ST_CODIGO'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object qryProjetosST_DESCRICAO: TWideStringField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'Situa'#231#227'o'
+      FieldName = 'ST_DESCRICAO'
+      Origin = 'ST_DESCRICAO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 100
+    end
+    object qryProjetosST_COR: TWideStringField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'Cor da situa'#231#227'o'
+      FieldName = 'ST_COR'
+      Origin = 'ST_COR'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 100
+    end
+  end
+  object dsProjetos: TDataSource
+    DataSet = qryProjetos
+    Left = 352
     Top = 64
   end
 end

@@ -1,0 +1,76 @@
+unit formFuncionarios;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Data.DB,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  Vcl.ExtCtrls,
+  Vcl.DBCtrls,
+  dmFuncionarios,
+  Vcl.StdCtrls,
+  Vcl.Mask;
+
+type
+  TfrmFuncionarios = class(TForm)
+    pnlMain: TPanel;
+    pnlGrid: TPanel;
+    dbgConsulta: TDBGrid;
+    dbnavCliente: TDBNavigator;
+    lblCodigo: TLabel;
+    edtCod: TDBEdit;
+    lblNome: TLabel;
+    edtNome: TDBEdit;
+    lblSenha: TLabel;
+    edtSenha: TDBEdit;
+    chkAdm: TDBCheckBox;
+    chkInativo: TDBCheckBox;
+    procedure FormShow(Sender: TObject);
+    procedure dbgConsultaDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmFuncionarios: TfrmFuncionarios;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmFuncionarios.dbgConsultaDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  with dbgConsulta.Canvas do
+  begin
+    if dbgConsulta.DataSource.DataSet.FieldByName('US_INATIVO').AsBoolean then
+      Brush.Color := RGB(255, 102, 102) // Vermelho claro
+    else if dbgConsulta.DataSource.DataSet.FieldByName('US_ADMIN').AsBoolean then
+      Brush.Color := RGB(255, 165, 0);
+
+    FillRect(Rect);
+    //TextOut(Rect.Left + 2, Rect.Top + 2, Column.Field.DisplayText);
+  end;
+
+  dbgConsulta.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+end;
+
+procedure TfrmFuncionarios.FormShow(Sender: TObject);
+begin
+  TDrawGrid(dbgConsulta).ScrollBars := ssVertical;
+end;
+
+end.

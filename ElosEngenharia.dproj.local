@@ -28,9 +28,9 @@
     <Transaction>2024/06/20 21:44:19.000.540,=C:\Users\vitor\Delphi projects\elos_engenharia\Unit1.pas</Transaction>
     <Transaction>2024/06/20 21:44:30.000.351,C:\Users\vitor\Delphi projects\elos_engenharia\Unit1.pas=C:\Users\vitor\Delphi projects\elos_engenharia\data modules\dmFuncionarios.pas</Transaction>
     <Transaction>2024/06/20 21:44:30.000.351,C:\Users\vitor\Delphi projects\elos_engenharia\Unit1.dfm=C:\Users\vitor\Delphi projects\elos_engenharia\data modules\dmFuncionarios.dfm</Transaction>
-    <Transaction>2024/06/23 18:50:12.341,=C:\Users\vitor\Delphi projects\elos_engenharia\Unit1.pas</Transaction>
-    <Transaction>2024/06/23 18:53:41.618,C:\Users\vitor\Delphi projects\elos_engenharia\formularios\formLogin.pas=C:\Users\vitor\Delphi projects\elos_engenharia\Unit1.pas</Transaction>
-    <Transaction>2024/06/23 18:53:41.618,C:\Users\vitor\Delphi projects\elos_engenharia\formularios\formLogin.dfm=C:\Users\vitor\Delphi projects\elos_engenharia\Unit1.dfm</Transaction>
+    <Transaction>2024/06/23 18:50:12.000.341,=C:\Users\vitor\Delphi projects\elos_engenharia\Unit1.pas</Transaction>
+    <Transaction>2024/06/23 18:53:41.000.618,C:\Users\vitor\Delphi projects\elos_engenharia\formularios\formLogin.pas=C:\Users\vitor\Delphi projects\elos_engenharia\Unit1.pas</Transaction>
+    <Transaction>2024/06/23 18:53:41.000.618,C:\Users\vitor\Delphi projects\elos_engenharia\formularios\formLogin.dfm=C:\Users\vitor\Delphi projects\elos_engenharia\Unit1.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="api"/>
