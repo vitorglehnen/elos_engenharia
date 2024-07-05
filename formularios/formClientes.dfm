@@ -934,6 +934,7 @@ object frmClientes: TfrmClientes
               Padding.Right = 5
               Padding.Bottom = 5
               TabOrder = 10
+              ExplicitTop = 357
               object dbgProjetos: TJvDBGrid
                 Left = 6
                 Top = 6
@@ -1022,7 +1023,7 @@ object frmClientes: TfrmClientes
               Top = 266
               Width = 145
               Height = 23
-              DataField = 'ST_DESCRICAO'
+              DataField = 'PJ_SITUACAO'
               DataSource = dm_Clientes.dsProjetos
               TabOrder = 7
               ListSettings.OutfilteredValueFont.Charset = DEFAULT_CHARSET

@@ -11,7 +11,10 @@ uses
   dmFuncionarios in 'data modules\dmFuncionarios.pas' {dm_funcionarios: TDataModule},
   Vcl.Themes,
   Vcl.Styles,
-  formLogin in 'formularios\formLogin.pas' {frmLogin};
+  formLogin in 'formularios\formLogin.pas' {frmLogin},
+  uFunctions in 'utils\uFunctions.pas',
+  formSituacoes in 'formularios\formSituacoes.pas' {frmSituacao},
+  dmSituacoes in 'data modules\dmSituacoes.pas' {dm_Situacoes: TDataModule};
 
 {$R *.res}
 
@@ -20,19 +23,11 @@ begin
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Glossy');
 
-  Application.CreateForm(TfrmLogin, frmLogin);
-  frmLogin.ShowModal;
-
-  if Assigned(frmMain) then
-  begin
-    Application.Run;
-    frmLogin.Free;
-  end
-  else
-    Application.Terminate;
-
   Application.CreateForm(Tdm, dm);
-  Application.CreateForm(Tdm_Clientes, dm_Clientes);
+  Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(Tdm_funcionarios, dm_funcionarios);
+  Application.CreateForm(Tdm_Clientes, dm_Clientes);
+  Application.CreateForm(TfrmSituacao, frmSituacao);
+  Application.CreateForm(Tdm_Situacoes, dm_Situacoes);
   Application.Run;
 end.

@@ -26,8 +26,16 @@ uses
   Vcl.CheckLst,
   ShellAPI,
   uReqUteis,
-  System.JSON, JvDBControls, JvExDBGrids, JvDBGrid, JvExMask, JvToolEdit,
-  JvExStdCtrls, JvCombobox, JvDBCombobox;
+  System.JSON,
+  JvDBControls,
+  JvExDBGrids,
+  JvDBGrid,
+  JvExMask,
+  JvToolEdit,
+  JvExStdCtrls,
+  JvCombobox,
+  JvDBCombobox,
+  uFunctions;
 
 type
   TfrmClientes = class(TForm)
@@ -289,6 +297,8 @@ procedure TfrmClientes.dbgConsultaDblClick(Sender: TObject);
 begin
    ntbPrincipal.PageIndex := 1;
    pgcPrincipal.ActivePageIndex := 0;
+
+   CarregaJvDBComboBox(cbSituacaoProjeto, 'SITUACAO', 'ST_DESCRICAO', '', 'ST_CODIGO', '', 'ST_DESCRICAO');
 end;
 
 procedure TfrmClientes.DsClientesAfterInsert(TDataSet: TDataSet);

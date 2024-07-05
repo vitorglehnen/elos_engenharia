@@ -1,0 +1,4 @@
+object dm_Situacoes: Tdm_Situacoes
+  Height = 480
+  Width = 640
+end

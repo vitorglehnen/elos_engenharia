@@ -11,7 +11,8 @@ uses
   dmFuncionarios in 'data modules\dmFuncionarios.pas' {dm_funcionarios: TDataModule},
   Vcl.Themes,
   Vcl.Styles,
-  formLogin in 'formularios\formLogin.pas' {frmLogin};
+  formLogin in 'formularios\formLogin.pas' {frmLogin},
+  uFunctions in 'utils\uFunctions.pas';
 
 {$R *.res}
 
@@ -20,9 +21,9 @@ begin
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Glossy');
 
-  Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(Tdm, dm);
-  Application.CreateForm(Tdm_Clientes, dm_Clientes);
+  Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(Tdm_funcionarios, dm_funcionarios);
+  Application.CreateForm(Tdm_Clientes, dm_Clientes);
   Application.Run;
 end.

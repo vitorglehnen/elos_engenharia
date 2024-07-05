@@ -23,6 +23,7 @@ object frmClientes: TfrmClientes
     Width = 628
     Height = 712
     Align = alClient
+    PageIndex = 1
     TabFont.Charset = DEFAULT_CHARSET
     TabFont.Color = clBtnText
     TabFont.Height = -15
@@ -361,6 +362,7 @@ object frmClientes: TfrmClientes
           ActivePage = pgProjetos
           Align = alClient
           TabOrder = 1
+          OnChange = pgcPrincipalChange
           OnChanging = pgcPrincipalChanging
           ExplicitHeight = 611
           object pgCadastro: TTabSheet
@@ -808,7 +810,6 @@ object frmClientes: TfrmClientes
               Width = 72
               Height = 15
               Caption = 'Data de in'#237'cio'
-              FocusControl = edtDataInicioProjeto
             end
             object lblDataPrevisaoProjeto: TLabel
               Left = 258
@@ -816,15 +817,16 @@ object frmClientes: TfrmClientes
               Width = 87
               Height = 15
               Caption = 'Data de previs'#227'o'
-              FocusControl = edtDataPrevisaoProjeto
             end
             object edtCodProjeto: TDBEdit
               Left = 4
               Top = 50
               Width = 61
               Height = 23
+              TabStop = False
               DataField = 'PJ_CODIGO'
               DataSource = dm_Clientes.dsProjetos
+              ReadOnly = True
               TabOrder = 0
             end
             object chkMinhaCasaMinhaVida: TDBCheckBox
@@ -862,25 +864,7 @@ object frmClientes: TfrmClientes
               Height = 23
               DataField = 'PJ_COORDENADAS'
               DataSource = dm_Clientes.dsProjetos
-              TabOrder = 7
-            end
-            object edtDataInicioProjeto: TDBEdit
-              Left = 258
-              Top = 50
-              Width = 154
-              Height = 23
-              DataField = 'PJ_DATAINICIO'
-              DataSource = dm_Clientes.dsProjetos
-              TabOrder = 1
-            end
-            object edtDataPrevisaoProjeto: TDBEdit
-              Left = 258
-              Top = 98
-              Width = 154
-              Height = 23
-              DataField = 'PJ_DATAPREVISAO'
-              DataSource = dm_Clientes.dsProjetos
-              TabOrder = 2
+              TabOrder = 8
             end
             object chkFinalizado: TDBCheckBox
               Left = 258
@@ -936,8 +920,116 @@ object frmClientes: TfrmClientes
                 FF00FFFFFF00}
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 8
+              TabOrder = 9
               OnClick = btnCoordenadaMapsProjetoClick
+            end
+            object pnlGridProjetos: TPanel
+              Left = 0
+              Top = 352
+              Width = 612
+              Height = 224
+              Align = alBottom
+              Padding.Left = 5
+              Padding.Top = 5
+              Padding.Right = 5
+              Padding.Bottom = 5
+              TabOrder = 10
+              object dbgProjetos: TJvDBGrid
+                Left = 6
+                Top = 6
+                Width = 600
+                Height = 212
+                Align = alClient
+                DataSource = dm_Clientes.dsProjetos
+                Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgTitleClick, dgTitleHotTrack]
+                TabOrder = 0
+                TitleFont.Charset = DEFAULT_CHARSET
+                TitleFont.Color = clWindowText
+                TitleFont.Height = -12
+                TitleFont.Name = 'Segoe UI'
+                TitleFont.Style = []
+                SelectColumnsDialogStrings.Caption = 'Select columns'
+                SelectColumnsDialogStrings.OK = '&OK'
+                SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
+                EditControls = <>
+                RowsHeight = 19
+                TitleRowHeight = 19
+                Columns = <
+                  item
+                    Expanded = False
+                    FieldName = 'PJ_CODIGO'
+                    Title.Caption = 'C'#243'digo'
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'PJ_MINHACASAMINHAVIDA'
+                    Title.Caption = 'MCMV'
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'PJ_TAMANHO'
+                    Width = 93
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'PJ_VALOR'
+                    Width = 84
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'PJ_DATAINICIO'
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'PJ_DATAPREVISAO'
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'PJ_FINALIZADO'
+                    Width = 126
+                    Visible = True
+                  end>
+              end
+            end
+            object edtDataInicioProjeto: TJvDBDateEdit
+              Left = 258
+              Top = 50
+              Width = 121
+              Height = 23
+              DataField = 'PJ_DATAINICIO'
+              DataSource = dm_Clientes.dsProjetos
+              ShowNullDate = False
+              TabOrder = 1
+            end
+            object edtDataPrevisaoProjeto: TJvDBDateEdit
+              Left = 258
+              Top = 98
+              Width = 121
+              Height = 23
+              DataField = 'PJ_DATAPREVISAO'
+              DataSource = dm_Clientes.dsProjetos
+              ShowNullDate = False
+              TabOrder = 2
+            end
+            object cbSituacaoProjeto: TJvDBComboBox
+              Left = 4
+              Top = 266
+              Width = 145
+              Height = 23
+              DataField = 'ST_DESCRICAO'
+              DataSource = dm_Clientes.dsProjetos
+              TabOrder = 7
+              ListSettings.OutfilteredValueFont.Charset = DEFAULT_CHARSET
+              ListSettings.OutfilteredValueFont.Color = clRed
+              ListSettings.OutfilteredValueFont.Height = -12
+              ListSettings.OutfilteredValueFont.Name = 'Segoe UI'
+              ListSettings.OutfilteredValueFont.Style = []
             end
           end
         end

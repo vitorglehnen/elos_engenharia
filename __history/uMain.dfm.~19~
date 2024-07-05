@@ -50,7 +50,6 @@ object frmMain: TfrmMain
       object Situacao1: TMenuItem
         Caption = 'Situa'#231#227'o'
         ShortCut = 16467
-        OnClick = Situacao1Click
       end
       object Funcionarios1: TMenuItem
         Caption = 'Funcion'#225'rios'

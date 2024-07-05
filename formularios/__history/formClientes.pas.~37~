@@ -26,7 +26,8 @@ uses
   Vcl.CheckLst,
   ShellAPI,
   uReqUteis,
-  System.JSON, JvDBControls, JvExDBGrids, JvDBGrid;
+  System.JSON, JvDBControls, JvExDBGrids, JvDBGrid, JvExMask, JvToolEdit,
+  JvExStdCtrls, JvCombobox, JvDBCombobox;
 
 type
   TfrmClientes = class(TForm)
@@ -97,13 +98,14 @@ type
     lblCoordenadasProjeto: TLabel;
     edtCoordenadasProjeto: TDBEdit;
     lblDataInicioProjeto: TLabel;
-    edtDataInicioProjeto: TDBEdit;
     lblDataPrevisaoProjeto: TLabel;
-    edtDataPrevisaoProjeto: TDBEdit;
     chkFinalizado: TDBCheckBox;
     btnCoordenadaMapsProjeto: TBitBtn;
     pnlGridProjetos: TPanel;
-    gridProjetos: TJvDBGrid;
+    dbgProjetos: TJvDBGrid;
+    edtDataInicioProjeto: TJvDBDateEdit;
+    edtDataPrevisaoProjeto: TJvDBDateEdit;
+    cbSituacaoProjeto: TJvDBComboBox;
     procedure FormShow(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure cbEstadosCadChange(Sender: TObject);
@@ -286,8 +288,7 @@ end;
 procedure TfrmClientes.dbgConsultaDblClick(Sender: TObject);
 begin
    ntbPrincipal.PageIndex := 1;
-   FDSProjetos.Open;
-   dm_Clientes.qryProjetos.ParamByName('CL_CODIGO').AsString;
+   pgcPrincipal.ActivePageIndex := 0;
 end;
 
 procedure TfrmClientes.DsClientesAfterInsert(TDataSet: TDataSet);
@@ -362,6 +363,8 @@ begin
 
    TDrawGrid(dbgConsulta).ScrollBars := ssVertical;
    DsClientesAfterScroll(dm_Clientes.dsClientes.DataSet);
+
+   TDrawGrid(dbgProjetos).ScrollBars := ssVertical;
 
    {$REGION 'Preenche cidades da consulta'}
    dm_Clientes.qryCidades.Open('select distinct(ci_ibge), ci_nome, ci_estado '+
