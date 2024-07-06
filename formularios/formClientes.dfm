@@ -23,7 +23,6 @@ object frmClientes: TfrmClientes
     Width = 628
     Height = 712
     Align = alClient
-    PageIndex = 1
     TabFont.Charset = DEFAULT_CHARSET
     TabFont.Color = clBtnText
     TabFont.Height = -15
@@ -33,22 +32,19 @@ object frmClientes: TfrmClientes
     OnChange = ntbPrincipalChange
     object TTabPage
       Left = 4
-      Top = 31
+      Top = 26
       Caption = 'Consulta'
-      ExplicitTop = 26
-      ExplicitHeight = 682
       object pnlPrincipalConsulta: TPanel
         Left = 0
         Top = 0
         Width = 620
-        Height = 677
+        Height = 682
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitHeight = 682
         object pnlGrid: TPanel
           Left = 0
-          Top = 181
+          Top = 186
           Width = 620
           Height = 496
           Align = alBottom
@@ -58,7 +54,6 @@ object frmClientes: TfrmClientes
           Padding.Right = 5
           Padding.Bottom = 5
           TabOrder = 1
-          ExplicitTop = 186
           object dbgConsulta: TDBGrid
             Left = 5
             Top = 5
@@ -171,11 +166,10 @@ object frmClientes: TfrmClientes
           Left = 0
           Top = 0
           Width = 620
-          Height = 181
+          Height = 186
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitHeight = 186
           object lblCidadeConsulta: TLabel
             Left = 368
             Top = 29
@@ -256,20 +250,17 @@ object frmClientes: TfrmClientes
     end
     object TTabPage
       Left = 4
-      Top = 31
+      Top = 26
       Caption = 'Cadastro'
-      ExplicitTop = 26
-      ExplicitHeight = 682
       object pnlPrincipalCadastro: TPanel
         Left = 0
         Top = 0
         Width = 620
-        Height = 677
+        Height = 682
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
         StyleElements = [seFont, seClient]
-        ExplicitHeight = 682
         object pnlBtnCrud: TPanel
           Left = 0
           Top = 0
@@ -358,13 +349,12 @@ object frmClientes: TfrmClientes
           Left = 0
           Top = 71
           Width = 620
-          Height = 606
+          Height = 611
           ActivePage = pgProjetos
           Align = alClient
           TabOrder = 1
           OnChange = pgcPrincipalChange
           OnChanging = pgcPrincipalChanging
-          ExplicitHeight = 611
           object pgCadastro: TTabSheet
             Caption = 'Cadastro'
             object lblCodigoCad: TLabel
@@ -818,6 +808,13 @@ object frmClientes: TfrmClientes
               Height = 15
               Caption = 'Data de previs'#227'o'
             end
+            object lblTipoProjeto: TLabel
+              Left = 258
+              Top = 250
+              Width = 23
+              Height = 15
+              Caption = 'Tipo'
+            end
             object edtCodProjeto: TDBEdit
               Left = 4
               Top = 50
@@ -864,7 +861,7 @@ object frmClientes: TfrmClientes
               Height = 23
               DataField = 'PJ_COORDENADAS'
               DataSource = dm_Clientes.dsProjetos
-              TabOrder = 8
+              TabOrder = 9
             end
             object chkFinalizado: TDBCheckBox
               Left = 258
@@ -920,12 +917,12 @@ object frmClientes: TfrmClientes
                 FF00FFFFFF00}
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 9
+              TabOrder = 10
               OnClick = btnCoordenadaMapsProjetoClick
             end
             object pnlGridProjetos: TPanel
               Left = 0
-              Top = 352
+              Top = 357
               Width = 612
               Height = 224
               Align = alBottom
@@ -933,8 +930,7 @@ object frmClientes: TfrmClientes
               Padding.Top = 5
               Padding.Right = 5
               Padding.Bottom = 5
-              TabOrder = 10
-              ExplicitTop = 357
+              TabOrder = 11
               object dbgProjetos: TJvDBGrid
                 Left = 6
                 Top = 6
@@ -1026,6 +1022,20 @@ object frmClientes: TfrmClientes
               DataField = 'PJ_SITUACAO'
               DataSource = dm_Clientes.dsProjetos
               TabOrder = 7
+              ListSettings.OutfilteredValueFont.Charset = DEFAULT_CHARSET
+              ListSettings.OutfilteredValueFont.Color = clRed
+              ListSettings.OutfilteredValueFont.Height = -12
+              ListSettings.OutfilteredValueFont.Name = 'Segoe UI'
+              ListSettings.OutfilteredValueFont.Style = []
+            end
+            object cbTipoProjeto: TJvDBComboBox
+              Left = 258
+              Top = 266
+              Width = 145
+              Height = 23
+              DataField = 'PJ_TIPO'
+              DataSource = dm_Clientes.dsProjetos
+              TabOrder = 8
               ListSettings.OutfilteredValueFont.Charset = DEFAULT_CHARSET
               ListSettings.OutfilteredValueFont.Color = clRed
               ListSettings.OutfilteredValueFont.Height = -12

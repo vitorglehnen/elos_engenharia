@@ -67,6 +67,7 @@ object frmSituacao: TfrmSituacao
         TitleFont.Height = -12
         TitleFont.Name = 'Segoe UI'
         TitleFont.Style = []
+        OnDrawColumnCell = dbgConsultaDrawColumnCell
         Columns = <
           item
             Expanded = False

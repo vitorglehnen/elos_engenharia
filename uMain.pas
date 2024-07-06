@@ -41,10 +41,6 @@ type
     procedure Situacao1Click(Sender: TObject);
   private
     { Private declarations }
-
-    frmClientes     : TfrmClientes;
-    frmFuncionarios : TfrmFuncionarios;
-    frmSituacao     : TfrmSituacao;
   public
     { Public declarations }
   end;
@@ -59,34 +55,34 @@ implementation
 
 procedure TfrmMain.Clientes1Click(Sender: TObject);
 begin
-  frmClientes := TFrmClientes.Create(nil);
+   frmClientes := TFrmClientes.Create(nil);
 end;
 
 procedure TfrmMain.Funcionarios1Click(Sender: TObject);
 begin
-  frmFuncionarios := TFrmFuncionarios.Create(nil);
+   frmFuncionarios := TFrmFuncionarios.Create(nil);
 
-  try
+   try
     frmFuncionarios.ShowModal;
-  finally
+   finally
     frmFuncionarios.Free;
-  end;
+   end;
 end;
 
 procedure TfrmMain.Sair1Click(Sender: TObject);
 begin
-  System.Halt(0);
+   System.Halt(0);
 end;
 
 procedure TfrmMain.Situacao1Click(Sender: TObject);
 begin
-  frmSituacao := TFrmSituacao.Create(nil);
+   frmSituacao := TFrmSituacao.Create(nil);
 
-  try
+   try
     frmSituacao.ShowModal;
-  finally
-    frmSituacao.Free;
-  end;
+   finally
+     frmSituacao.Free;
+   end;
 end;
 
 end.

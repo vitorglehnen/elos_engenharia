@@ -26,7 +26,16 @@ uses
   Vcl.CheckLst,
   ShellAPI,
   uReqUteis,
-  System.JSON, JvDBControls, JvExDBGrids, JvDBGrid;
+  System.JSON,
+  JvDBControls,
+  JvExDBGrids,
+  JvDBGrid,
+  JvExMask,
+  JvToolEdit,
+  JvExStdCtrls,
+  JvCombobox,
+  JvDBCombobox,
+  uFunctions;
 
 type
   TfrmClientes = class(TForm)
@@ -97,17 +106,18 @@ type
     lblCoordenadasProjeto: TLabel;
     edtCoordenadasProjeto: TDBEdit;
     lblDataInicioProjeto: TLabel;
-    edtDataInicioProjeto: TDBEdit;
     lblDataPrevisaoProjeto: TLabel;
-    edtDataPrevisaoProjeto: TDBEdit;
     chkFinalizado: TDBCheckBox;
     btnCoordenadaMapsProjeto: TBitBtn;
     pnlGridProjetos: TPanel;
-    gridProjetos: TJvDBGrid;
-    procedure FormShow(Sender: TObject);
+    dbgProjetos: TJvDBGrid;
+    edtDataInicioProjeto: TJvDBDateEdit;
+    edtDataPrevisaoProjeto: TJvDBDateEdit;
+    cbSituacaoProjeto: TJvDBComboBox;
+    cbTipoProjeto: TJvDBComboBox;
+    lblTipoProjeto: TLabel;
     procedure btnNovoClick(Sender: TObject);
     procedure cbEstadosCadChange(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure dbgConsultaDblClick(Sender: TObject);
     procedure cbCidadesCadChange(Sender: TObject);
     procedure btnConsultarClick(Sender: TObject);
@@ -119,6 +129,9 @@ type
     procedure pgcPrincipalChanging(Sender: TObject; var AllowChange: Boolean);
     procedure btnCoordenadaMapsProjetoClick(Sender: TObject);
     procedure pgcPrincipalChange(Sender: TObject);
+
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
 
@@ -286,8 +299,10 @@ end;
 procedure TfrmClientes.dbgConsultaDblClick(Sender: TObject);
 begin
    ntbPrincipal.PageIndex := 1;
-   FDSProjetos.Open;
-   dm_Clientes.qryProjetos.ParamByName('CL_CLIENTE').AsString;
+   pgcPrincipal.ActivePageIndex := 0;
+
+   CarregaJvDBComboBox(cbSituacaoProjeto, 'SITUACAO', 'ST_DESCRICAO', '', 'ST_CODIGO', '', 'ST_DESCRICAO');
+   CarregaJvDBComboBox(cbTipoProjeto, 'TIPOPROJETO', 'TJ_DESCRICAO', '', 'TJ_CODIGO', '', 'TJ_DESCRICAO');
 end;
 
 procedure TfrmClientes.DsClientesAfterInsert(TDataSet: TDataSet);
@@ -363,7 +378,9 @@ begin
    TDrawGrid(dbgConsulta).ScrollBars := ssVertical;
    DsClientesAfterScroll(dm_Clientes.dsClientes.DataSet);
 
-   {$REGION 'Preenche cidades da consulta'}
+   TDrawGrid(dbgProjetos).ScrollBars := ssVertical;
+
+   d{$REGION 'Preenche cidades da consulta'}
    dm_Clientes.qryCidades.Open('select distinct(ci_ibge), ci_nome, ci_estado '+
                         'from cidades '+
                         'join clientes on cl_cidade = ci_ibge '+

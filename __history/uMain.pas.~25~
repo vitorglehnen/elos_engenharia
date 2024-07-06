@@ -1,4 +1,4 @@
-unit uMain;
+﻿unit uMain;
 
 interface
 
@@ -16,6 +16,7 @@ uses
   Vcl.Menus,
   formClientes,
   formFuncionarios,
+  formSituacoes,
   Vcl.Imaging.pngimage,
   System.Actions,
   Vcl.ActnList,
@@ -33,14 +34,13 @@ type
     Clientes1: TMenuItem;
     Projetos1: TMenuItem;
     Funcionarios1: TMenuItem;
+    Situacao1: TMenuItem;
     procedure Clientes1Click(Sender: TObject);
     procedure Sair1Click(Sender: TObject);
     procedure Funcionarios1Click(Sender: TObject);
+    procedure Situacao1Click(Sender: TObject);
   private
     { Private declarations }
-
-    frmClientes     : TfrmClientes;
-    frmFuncionarios : TfrmFuncionarios;
   public
     { Public declarations }
   end;
@@ -50,14 +50,13 @@ var
 
 implementation
 
-uses
-  formLogin;
 
 {$R *.dfm}
 
 procedure TfrmMain.Clientes1Click(Sender: TObject);
 begin
-  frmClientes := TFrmClientes.Create(nil);
+   frmClientes := TFrmClientes.Create(nil);
+   frmClientes.Parent := Self;
 end;
 
 procedure TfrmMain.Funcionarios1Click(Sender: TObject);
@@ -74,6 +73,17 @@ end;
 procedure TfrmMain.Sair1Click(Sender: TObject);
 begin
   System.Halt(0);
+end;
+
+procedure TfrmMain.Situacao1Click(Sender: TObject);
+begin
+  frmSituacao := TFrmSituacao.Create(nil);
+
+  try
+    frmSituacao.ShowModal;
+  finally
+    frmSituacao.Free;
+  end;
 end;
 
 end.

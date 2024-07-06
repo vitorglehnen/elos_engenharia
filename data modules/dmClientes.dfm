@@ -337,6 +337,11 @@ object dm_Clientes: Tdm_Clientes
       ReadOnly = True
       Size = 100
     end
+    object intgrfldProjetosPJ_TIPO: TIntegerField
+      DisplayLabel = 'Tipo'
+      FieldName = 'PJ_TIPO'
+      Origin = 'PJ_TIPO'
+    end
   end
   object dsProjetos: TDataSource
     DataSet = qryProjetos

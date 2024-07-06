@@ -114,10 +114,10 @@ type
     edtDataInicioProjeto: TJvDBDateEdit;
     edtDataPrevisaoProjeto: TJvDBDateEdit;
     cbSituacaoProjeto: TJvDBComboBox;
-    procedure FormShow(Sender: TObject);
+    cbTipoProjeto: TJvDBComboBox;
+    lblTipoProjeto: TLabel;
     procedure btnNovoClick(Sender: TObject);
     procedure cbEstadosCadChange(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure dbgConsultaDblClick(Sender: TObject);
     procedure cbCidadesCadChange(Sender: TObject);
     procedure btnConsultarClick(Sender: TObject);
@@ -129,6 +129,9 @@ type
     procedure pgcPrincipalChanging(Sender: TObject; var AllowChange: Boolean);
     procedure btnCoordenadaMapsProjetoClick(Sender: TObject);
     procedure pgcPrincipalChange(Sender: TObject);
+
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
 
@@ -299,6 +302,7 @@ begin
    pgcPrincipal.ActivePageIndex := 0;
 
    CarregaJvDBComboBox(cbSituacaoProjeto, 'SITUACAO', 'ST_DESCRICAO', '', 'ST_CODIGO', '', 'ST_DESCRICAO');
+   CarregaJvDBComboBox(cbTipoProjeto, 'TIPOPROJETO', 'TJ_DESCRICAO', '', 'TJ_CODIGO', '', 'TJ_DESCRICAO');
 end;
 
 procedure TfrmClientes.DsClientesAfterInsert(TDataSet: TDataSet);

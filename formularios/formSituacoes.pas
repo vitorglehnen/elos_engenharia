@@ -31,17 +31,12 @@ type
     edtCodigo: TDBEdit;
     lblDescricao: TLabel;
     edtDescrocap: TDBEdit;
-    lblCor: TLabel;
-    clbCor: TJvColorComboBox;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure dbgConsultaDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     { Private declarations }
   public
     { Public declarations }
-    procedure DsSituacoesBeforePost(TDataSet: TDataSet);
   end;
 
 var
@@ -53,37 +48,8 @@ implementation
 
 { TfrmSituacao }
 
-procedure TfrmSituacao.dbgConsultaDrawColumnCell(Sender: TObject; const Rect: TRect;
-  DataCol: Integer; Column: TColumn; State: TGridDrawState);
-var
-  CellColor: TColor;
-begin
-   with dbgConsulta.Canvas do
-   begin
-      if Column.FieldName = 'ST_COR' then
-      begin
-         try
-            CellColor := StringToColor(dm_Situacoes.qrySituacoes.FieldByName('ST_COR').AsString);
-         except
-            CellColor := clWhite;
-         end;
-
-         Brush.Color := CellColor;
-         FillRect(Rect);
-      end;
-   end;
-
-   dbgConsulta.DefaultDrawColumnCell(Rect, DataCol, Column, State);
-end;
-
-procedure TfrmSituacao.DsSituacoesBeforePost(TDataSet: TDataSet);
-begin
-
-end;
-
 procedure TfrmSituacao.FormCreate(Sender: TObject);
 begin
-   dm_Situacoes.qrySituacoes.AfterPost := DsSituacoesBeforePost;
    dm_Situacoes.qrySituacoes.Open;
 end;
 

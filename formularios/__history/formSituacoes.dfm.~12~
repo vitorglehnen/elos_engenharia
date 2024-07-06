@@ -40,6 +40,13 @@ object frmSituacao: TfrmSituacao
       Caption = 'Descri'#231#227'o'
       FocusControl = edtDescrocap
     end
+    object lblCor: TLabel
+      Left = 10
+      Top = 152
+      Width = 19
+      Height = 15
+      Caption = 'Cor'
+    end
     object pnlGrid: TPanel
       Left = 0
       Top = 216
@@ -51,7 +58,7 @@ object frmSituacao: TfrmSituacao
       Padding.Top = 10
       Padding.Right = 10
       Padding.Bottom = 10
-      TabOrder = 3
+      TabOrder = 4
       object dbgConsulta: TDBGrid
         Left = 10
         Top = 10
@@ -67,6 +74,7 @@ object frmSituacao: TfrmSituacao
         TitleFont.Height = -12
         TitleFont.Name = 'Segoe UI'
         TitleFont.Style = []
+        OnDrawColumnCell = dbgConsultaDrawColumnCell
         Columns = <
           item
             Expanded = False
@@ -109,6 +117,16 @@ object frmSituacao: TfrmSituacao
       DataField = 'ST_DESCRICAO'
       DataSource = dm_Situacoes.dsSituacoes
       TabOrder = 2
+    end
+    object clbCor: TJvColorComboBox
+      Left = 10
+      Top = 168
+      Width = 167
+      Height = 22
+      ColorDialogText = 'Custom...'
+      DroppedDownWidth = 167
+      NewColorText = 'Custom'
+      TabOrder = 3
     end
   end
 end
