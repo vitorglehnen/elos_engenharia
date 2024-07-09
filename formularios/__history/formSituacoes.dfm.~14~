@@ -13,7 +13,6 @@ object frmSituacao: TfrmSituacao
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
-  Visible = True
   OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15

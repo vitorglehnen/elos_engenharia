@@ -137,7 +137,7 @@ object frmClientes: TfrmClientes
                 Expanded = False
                 FieldName = 'CI_NOME'
                 Title.Caption = 'Cidade'
-                Width = 217
+                Width = 241
                 Visible = True
               end
               item

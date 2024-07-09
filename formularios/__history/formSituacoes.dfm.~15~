@@ -12,6 +12,7 @@ object frmSituacao: TfrmSituacao
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  FormStyle = fsMDIChild
   Position = poScreenCenter
   Visible = True
   OnCreate = FormCreate

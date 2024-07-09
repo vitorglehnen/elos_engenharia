@@ -64,7 +64,6 @@ begin
       connection.Params.Database := ConnectIni.ReadString('BANCO', 'Database', 'C:\Elos Sistema\ELOSDB.FDB');
       connection.Params.Add('Server=' + ConnectIni.ReadString('BANCO', 'Server', '127.0.0.1'));
       connection.Params.Add('Port=' + ConnectIni.ReadString('BANCO', 'Port', '3050'));
-      connection.Params.Add('Password=' + ConnectIni.ReadString('BANCO', 'Password', ''));
       try
         connection.Connected := True;
       except
@@ -89,7 +88,6 @@ begin
     ConnectIni.WriteString('BANCO', 'Server', '127.0.0.1');
     ConnectIni.WriteString('BANCO', 'Port', '3050');
     ConnectIni.WriteString('BANCO', 'Database', 'C:\Elos Sistema\ELOSDB.FDB');
-    ConnectIni.WriteString('BANCO', 'Password', '');
   finally
     ConnectIni.Free;
   end;

@@ -57,7 +57,7 @@ begin
   with dbgConsulta.Canvas do
   begin
     if dbgConsulta.DataSource.DataSet.FieldByName('US_INATIVO').AsBoolean then
-      Brush.Color := RGB(255, 102, 102)
+      Brush.Color := RGB(255, 102, 102) // Vermelho claro
     else if dbgConsulta.DataSource.DataSet.FieldByName('US_ADMIN').AsBoolean then
       Brush.Color := RGB(255, 165, 0);
 

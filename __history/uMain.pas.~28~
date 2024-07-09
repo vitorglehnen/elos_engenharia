@@ -55,24 +55,24 @@ implementation
 
 procedure TfrmMain.Clientes1Click(Sender: TObject);
 begin
-   if not Assigned(frmClientes) then
-   begin
-      frmClientes := TfrmClientes.Create(Self);
-      frmClientes.Parent := Self;
-   end;
+   frmClientes := TFrmClientes.Create(nil);
 
-   frmClientes.Show;
+   try
+      frmClientes.ShowModal;
+   finally
+      frmClientes.Free;
+   end;
 end;
 
 procedure TfrmMain.Funcionarios1Click(Sender: TObject);
 begin
-   if not Assigned(frmFuncionarios) then
-   begin
-      frmFuncionarios := TfrmFuncionarios.Create(Self);
-      frmFuncionarios.Parent := Self;
-   end;
+   frmFuncionarios := TFrmFuncionarios.Create(nil);
 
-   frmFuncionarios.Show;
+   try
+    frmFuncionarios.ShowModal;
+   finally
+    frmFuncionarios.Free;
+   end;
 end;
 
 procedure TfrmMain.Sair1Click(Sender: TObject);
@@ -82,13 +82,13 @@ end;
 
 procedure TfrmMain.Situacao1Click(Sender: TObject);
 begin
-   if not Assigned(frmSituacao) then
-   begin
-      frmSituacao := TfrmSituacao.Create(Self);
-      frmSituacao.Parent := Self;
-   end;
+   frmSituacao := TFrmSituacao.Create(nil);
 
-   frmSituacao.Show;
+   try
+    frmSituacao.ShowModal;
+   finally
+     frmSituacao.Free;
+   end;
 end;
 
 end.

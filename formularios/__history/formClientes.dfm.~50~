@@ -12,6 +12,7 @@ object frmClientes: TfrmClientes
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  FormStyle = fsMDIChild
   Position = poScreenCenter
   Visible = True
   OnCreate = FormCreate
@@ -32,19 +33,22 @@ object frmClientes: TfrmClientes
     OnChange = ntbPrincipalChange
     object TTabPage
       Left = 4
-      Top = 26
+      Top = 31
       Caption = 'Consulta'
+      ExplicitTop = 26
+      ExplicitHeight = 682
       object pnlPrincipalConsulta: TPanel
         Left = 0
         Top = 0
         Width = 620
-        Height = 682
+        Height = 677
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitHeight = 682
         object pnlGrid: TPanel
           Left = 0
-          Top = 186
+          Top = 181
           Width = 620
           Height = 496
           Align = alBottom
@@ -54,6 +58,7 @@ object frmClientes: TfrmClientes
           Padding.Right = 5
           Padding.Bottom = 5
           TabOrder = 1
+          ExplicitTop = 186
           object dbgConsulta: TDBGrid
             Left = 5
             Top = 5
@@ -137,7 +142,7 @@ object frmClientes: TfrmClientes
                 Expanded = False
                 FieldName = 'CI_NOME'
                 Title.Caption = 'Cidade'
-                Width = 217
+                Width = 241
                 Visible = True
               end
               item
@@ -166,10 +171,11 @@ object frmClientes: TfrmClientes
           Left = 0
           Top = 0
           Width = 620
-          Height = 186
+          Height = 181
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
+          ExplicitHeight = 186
           object lblCidadeConsulta: TLabel
             Left = 368
             Top = 29
@@ -250,17 +256,20 @@ object frmClientes: TfrmClientes
     end
     object TTabPage
       Left = 4
-      Top = 26
+      Top = 31
       Caption = 'Cadastro'
+      ExplicitTop = 26
+      ExplicitHeight = 682
       object pnlPrincipalCadastro: TPanel
         Left = 0
         Top = 0
         Width = 620
-        Height = 682
+        Height = 677
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
         StyleElements = [seFont, seClient]
+        ExplicitHeight = 682
         object pnlBtnCrud: TPanel
           Left = 0
           Top = 0
@@ -349,12 +358,13 @@ object frmClientes: TfrmClientes
           Left = 0
           Top = 71
           Width = 620
-          Height = 611
+          Height = 606
           ActivePage = pgProjetos
           Align = alClient
           TabOrder = 1
           OnChange = pgcPrincipalChange
           OnChanging = pgcPrincipalChanging
+          ExplicitHeight = 611
           object pgCadastro: TTabSheet
             Caption = 'Cadastro'
             object lblCodigoCad: TLabel
@@ -922,7 +932,7 @@ object frmClientes: TfrmClientes
             end
             object pnlGridProjetos: TPanel
               Left = 0
-              Top = 357
+              Top = 352
               Width = 612
               Height = 224
               Align = alBottom
@@ -931,6 +941,7 @@ object frmClientes: TfrmClientes
               Padding.Right = 5
               Padding.Bottom = 5
               TabOrder = 11
+              ExplicitTop = 357
               object dbgProjetos: TJvDBGrid
                 Left = 6
                 Top = 6
@@ -979,11 +990,13 @@ object frmClientes: TfrmClientes
                   item
                     Expanded = False
                     FieldName = 'PJ_DATAINICIO'
+                    Width = 64
                     Visible = True
                   end
                   item
                     Expanded = False
                     FieldName = 'PJ_DATAPREVISAO'
+                    Width = 64
                     Visible = True
                   end
                   item

@@ -153,7 +153,6 @@ type
 
     procedure CarregaCidades;
     procedure CarregaEstados;
-    procedure CarregaComboBoxs;
   public
     { Public declarations }
   end;
@@ -259,12 +258,6 @@ begin
    dm_Clientes.qryCidades.Close;
 end;
 
-procedure TfrmClientes.CarregaComboBoxs;
-begin
-   CarregaJvDBComboBox(cbSituacaoProjeto, 'SITUACAO', 'ST_DESCRICAO', '', 'ST_CODIGO', '', 'ST_DESCRICAO');
-   CarregaJvDBComboBox(cbTipoProjeto, 'TIPOPROJETO', 'TJ_DESCRICAO', '', 'TJ_CODIGO', '', 'TJ_DESCRICAO');
-end;
-
 procedure TfrmClientes.CarregaEstados;
 begin
    dm_Clientes.qryEstados.Open;
@@ -307,6 +300,9 @@ procedure TfrmClientes.dbgConsultaDblClick(Sender: TObject);
 begin
    ntbPrincipal.PageIndex := 1;
    pgcPrincipal.ActivePageIndex := 0;
+
+   CarregaJvDBComboBox(cbSituacaoProjeto, 'SITUACAO', 'ST_DESCRICAO', '', 'ST_CODIGO', '', 'ST_DESCRICAO');
+   CarregaJvDBComboBox(cbTipoProjeto, 'TIPOPROJETO', 'TJ_DESCRICAO', '', 'TJ_CODIGO', '', 'TJ_DESCRICAO');
 end;
 
 procedure TfrmClientes.DsClientesAfterInsert(TDataSet: TDataSet);
@@ -379,16 +375,16 @@ begin
    ntbPrincipal.PageIndex       := 0;
    pgcPrincipal.ActivePageIndex := 0;
 
+   TDrawGrid(dbgConsulta).ScrollBars := ssVertical;
    DsClientesAfterScroll(dm_Clientes.dsClientes.DataSet);
 
-   CarregaComboBoxs;
+   TDrawGrid(dbgProjetos).ScrollBars := ssVertical;
 
    {$REGION 'Preenche cidades da consulta'}
    dm_Clientes.qryCidades.Open('select distinct(ci_ibge), ci_nome, ci_estado '+
                         'from cidades '+
                         'join clientes on cl_cidade = ci_ibge '+
-                        'order by 2');
-   chklbCidadesConsulta.Items.Clear;
+                        'order by 1');
    while not FDSCidades.Eof do
    begin
     chklbCidadesConsulta.Items.Add(FDSCidades.FieldByName('ci_nome').AsString);
@@ -396,9 +392,6 @@ begin
     FDSCidades.Next;
    end;
    {$ENDREGION}
-
-   FDSClientes.Open;
-   FDSProjetos.Open;
 end;
 
 procedure TfrmClientes.MontaFiltroConsulta;

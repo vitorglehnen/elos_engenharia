@@ -379,7 +379,10 @@ begin
    ntbPrincipal.PageIndex       := 0;
    pgcPrincipal.ActivePageIndex := 0;
 
+   TDrawGrid(dbgConsulta).ScrollBars := ssVertical;
    DsClientesAfterScroll(dm_Clientes.dsClientes.DataSet);
+
+   TDrawGrid(dbgProjetos).ScrollBars := ssVertical;
 
    CarregaComboBoxs;
 
@@ -388,7 +391,6 @@ begin
                         'from cidades '+
                         'join clientes on cl_cidade = ci_ibge '+
                         'order by 2');
-   chklbCidadesConsulta.Items.Clear;
    while not FDSCidades.Eof do
    begin
     chklbCidadesConsulta.Items.Add(FDSCidades.FieldByName('ci_nome').AsString);
