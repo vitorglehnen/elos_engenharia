@@ -956,45 +956,60 @@ object frmClientes: TfrmClientes
               Padding.Bottom = 5
               TabOrder = 12
               ExplicitTop = 357
-              object dbgProjetos: TDBGrid
+              object dbgProjetos: TJvDBGrid
                 Left = 6
                 Top = 6
                 Width = 600
                 Height = 212
                 Align = alClient
                 DataSource = dm_Clientes.dsProjetos
-                Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+                Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgTitleClick, dgTitleHotTrack]
                 TabOrder = 0
                 TitleFont.Charset = DEFAULT_CHARSET
                 TitleFont.Color = clWindowText
                 TitleFont.Height = -12
                 TitleFont.Name = 'Segoe UI'
                 TitleFont.Style = []
+                SelectColumnsDialogStrings.Caption = 'Select columns'
+                SelectColumnsDialogStrings.OK = '&OK'
+                SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
+                EditControls = <>
+                RowsHeight = 19
+                TitleRowHeight = 19
                 Columns = <
                   item
-                    Alignment = taLeftJustify
                     Expanded = False
-                    FieldName = 'PJ_TAMANHO'
-                    Width = 64
+                    FieldName = 'PJ_DESCRICAO'
+                    Width = 226
                     Visible = True
                   end
                   item
-                    Alignment = taLeftJustify
+                    Expanded = False
+                    FieldName = 'PJ_MINHACASAMINHAVIDA'
+                    Title.Caption = 'MCMV'
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'PJ_TAMANHO'
+                    Width = 66
+                    Visible = True
+                  end
+                  item
                     Expanded = False
                     FieldName = 'PJ_VALOR'
-                    Width = 64
+                    Width = 84
                     Visible = True
                   end
                   item
                     Expanded = False
                     FieldName = 'PJ_DATAPREVISAO'
-                    Width = 90
+                    Width = 64
                     Visible = True
                   end
                   item
                     Expanded = False
-                    FieldName = 'PJ_DESCRICAO'
-                    Width = 288
+                    FieldName = 'PJ_FINALIZADO'
                     Visible = True
                   end>
               end
@@ -1019,7 +1034,6 @@ object frmClientes: TfrmClientes
               Height = 21
               DataField = 'PJ_DATAPREVISAO'
               DataSource = dm_Clientes.dsProjetos
-              CheckOnExit = True
               Flat = True
               ParentFlat = False
               ShowNullDate = False

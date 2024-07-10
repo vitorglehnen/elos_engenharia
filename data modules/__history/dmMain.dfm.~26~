@@ -8,7 +8,9 @@ object dm: Tdm
       'User_Name=SYSDBA'
       'Port=3050'
       'CharacterSet=UTF8'
+      'Password=masterkey'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Left = 80
     Top = 344

@@ -34,7 +34,7 @@ object frmMain: TfrmMain
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clInfoBk
-      Font.Height = -53
+      Font.Height = -67
       Font.Name = 'Courier'
       Font.Style = [fsBold]
       ParentBackground = False

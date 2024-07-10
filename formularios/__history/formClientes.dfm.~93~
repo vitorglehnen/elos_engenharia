@@ -972,6 +972,12 @@ object frmClientes: TfrmClientes
                 TitleFont.Style = []
                 Columns = <
                   item
+                    Expanded = False
+                    FieldName = 'PJ_DESCRICAO'
+                    Width = 288
+                    Visible = True
+                  end
+                  item
                     Alignment = taLeftJustify
                     Expanded = False
                     FieldName = 'PJ_TAMANHO'
@@ -988,13 +994,6 @@ object frmClientes: TfrmClientes
                   item
                     Expanded = False
                     FieldName = 'PJ_DATAPREVISAO'
-                    Width = 90
-                    Visible = True
-                  end
-                  item
-                    Expanded = False
-                    FieldName = 'PJ_DESCRICAO'
-                    Width = 288
                     Visible = True
                   end>
               end

@@ -1,9 +1,9 @@
-object frmFuncionarios: TfrmFuncionarios
+object frmSituacao: TfrmSituacao
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Funcion'#225'rios'
+  Caption = 'Situa'#231#245'es'
   ClientHeight = 383
   ClientWidth = 628
   Color = clBtnFace
@@ -12,10 +12,9 @@ object frmFuncionarios: TfrmFuncionarios
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  KeyPreview = True
   Position = poScreenCenter
   Visible = True
-  OnKeyPress = FormKeyPress
+  OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
   object pnlMain: TPanel
@@ -28,27 +27,19 @@ object frmFuncionarios: TfrmFuncionarios
     TabOrder = 0
     object lblCodigo: TLabel
       Left = 10
-      Top = 64
+      Top = 56
       Width = 39
       Height = 15
       Caption = 'C'#243'digo'
-      FocusControl = edtCod
+      FocusControl = edtCodigo
     end
-    object lblNome: TLabel
+    object lblDescricao: TLabel
       Left = 10
-      Top = 112
-      Width = 33
+      Top = 104
+      Width = 51
       Height = 15
-      Caption = 'Nome'
-      FocusControl = edtNome
-    end
-    object lblSenha: TLabel
-      Left = 10
-      Top = 152
-      Width = 32
-      Height = 15
-      Caption = 'Senha'
-      FocusControl = edtSenha
+      Caption = 'Descri'#231#227'o'
+      FocusControl = edtDescrocap
     end
     object pnlGrid: TPanel
       Left = 0
@@ -61,14 +52,14 @@ object frmFuncionarios: TfrmFuncionarios
       Padding.Top = 10
       Padding.Right = 10
       Padding.Bottom = 10
-      TabOrder = 6
+      TabOrder = 3
       object dbgConsulta: TDBGrid
         Left = 10
         Top = 10
         Width = 608
         Height = 147
         Align = alClient
-        DataSource = dm_funcionarios.dsFuncionarios
+        DataSource = dm_Situacoes.dsSituacoes
         DrawingStyle = gdsGradient
         Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 0
@@ -77,17 +68,16 @@ object frmFuncionarios: TfrmFuncionarios
         TitleFont.Height = -12
         TitleFont.Name = 'Segoe UI'
         TitleFont.Style = []
-        OnDrawColumnCell = dbgConsultaDrawColumnCell
         Columns = <
           item
             Expanded = False
-            FieldName = 'US_CODIGO'
+            FieldName = 'ST_CODIGO'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'US_NOME'
-            Width = 526
+            FieldName = 'ST_DESCRICAO'
+            Width = 524
             Visible = True
           end>
       end
@@ -97,58 +87,29 @@ object frmFuncionarios: TfrmFuncionarios
       Top = 5
       Width = 608
       Height = 42
-      DataSource = dm_funcionarios.dsFuncionarios
+      DataSource = dm_Situacoes.dsSituacoes
       VisibleButtons = [nbInsert, nbDelete, nbPost, nbCancel]
       TabOrder = 0
     end
-    object edtCod: TDBEdit
+    object edtCodigo: TDBEdit
       Left = 10
-      Top = 83
-      Width = 71
+      Top = 72
+      Width = 51
       Height = 23
-      DataField = 'US_CODIGO'
-      DataSource = dm_funcionarios.dsFuncionarios
+      TabStop = False
+      DataField = 'ST_CODIGO'
+      DataSource = dm_Situacoes.dsSituacoes
       ReadOnly = True
       TabOrder = 1
     end
-    object edtNome: TDBEdit
+    object edtDescrocap: TDBEdit
       Left = 10
-      Top = 128
-      Width = 304
+      Top = 120
+      Width = 400
       Height = 23
-      DataField = 'US_NOME'
-      DataSource = dm_funcionarios.dsFuncionarios
-      TabOrder = 4
-    end
-    object edtSenha: TDBEdit
-      Left = 10
-      Top = 168
-      Width = 304
-      Height = 23
-      DataField = 'US_SENHA'
-      DataSource = dm_funcionarios.dsFuncionarios
-      PasswordChar = '*'
-      TabOrder = 5
-    end
-    object chkAdm: TDBCheckBox
-      Left = 154
-      Top = 86
-      Width = 97
-      Height = 17
-      Caption = 'Admnistrador'
-      DataField = 'US_ADMIN'
-      DataSource = dm_funcionarios.dsFuncionarios
+      DataField = 'ST_DESCRICAO'
+      DataSource = dm_Situacoes.dsSituacoes
       TabOrder = 2
-    end
-    object chkInativo: TDBCheckBox
-      Left = 257
-      Top = 86
-      Width = 57
-      Height = 17
-      Caption = 'Inativo'
-      DataField = 'US_INATIVO'
-      DataSource = dm_funcionarios.dsFuncionarios
-      TabOrder = 3
     end
   end
 end

@@ -30,15 +30,8 @@ object frmMain: TfrmMain
       Width = 1224
       Height = 816
       Align = alClient
-      Caption = 'ELOS'
       Color = clWhite
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clInfoBk
-      Font.Height = -53
-      Font.Name = 'Courier'
-      Font.Style = [fsBold]
       ParentBackground = False
-      ParentFont = False
       TabOrder = 0
     end
   end

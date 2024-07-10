@@ -33,8 +33,8 @@ object frmMain: TfrmMain
       Caption = 'ELOS'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clInfoBk
-      Font.Height = -53
+      Font.Color = clHighlightText
+      Font.Height = -67
       Font.Name = 'Courier'
       Font.Style = [fsBold]
       ParentBackground = False

@@ -67,7 +67,6 @@ type
     qryProjetosST_DESCRICAO: TWideStringField;
     qryProjetosST_COR: TWideStringField;
     intgrfldProjetosPJ_TIPO: TIntegerField;
-    wdstrngfldProjetosPJ_DESCRICAO: TWideStringField;
   private
     { Private declarations }
   public

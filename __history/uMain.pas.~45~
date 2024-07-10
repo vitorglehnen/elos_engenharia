@@ -54,32 +54,50 @@ implementation
 {$R *.dfm}
 
 procedure TfrmMain.Clientes1Click(Sender: TObject);
+var
+   frmClientes : TFrmClientes;
 begin
-   if not Assigned(frmClientes) then
-      frmClientes := TfrmClientes.Create(Application);
+   frmClientes := TfrmClientes.Create(Self);
 
    frmClientes.Show;
+//   if frmClientes = Nil then
+//      Application.CreateForm(TfrmClientes, frmClientes);
+//
+//   frmClientes.Show;
+//   if not Assigned(frmClientes) then
+//   begin
+//      frmClientes := TfrmClientes.Create(Self);
+//      frmClientes.Parent := Self;
+//   end;
+//
+//   frmClientes.ShowModal;
 end;
 
 procedure TfrmMain.Funcionarios1Click(Sender: TObject);
 begin
    if not Assigned(frmFuncionarios) then
-      frmFuncionarios := TfrmFuncionarios.Create(Application);
+   begin
+      frmFuncionarios := TfrmFuncionarios.Create(Self);
+      frmFuncionarios.Parent := Self;
+   end;
 
    frmFuncionarios.Show;
-end;
-
-procedure TfrmMain.Situacao1Click(Sender: TObject);
-begin
-   if not Assigned(frmSituacao) then
-      frmSituacao := TfrmSituacao.Create(Application);
-
-   frmSituacao.Show;
 end;
 
 procedure TfrmMain.Sair1Click(Sender: TObject);
 begin
    System.Halt(0);
+end;
+
+procedure TfrmMain.Situacao1Click(Sender: TObject);
+begin
+   if not Assigned(frmSituacao) then
+   begin
+      frmSituacao := TfrmSituacao.Create(Self);
+      frmSituacao.Parent := Self;
+   end;
+
+   frmSituacao.Show;
 end;
 
 end.

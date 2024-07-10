@@ -239,7 +239,7 @@ object dm_Clientes: Tdm_Clientes
     SQL.Strings = (
       'select pj.*, st.* '
       'from projetos pj'
-      'left join situacao st on st.st_codigo = pj.pj_situacao'
+      'inner join situacao st on st.st_codigo = pj.pj_situacao'
       'where pj.pj_cliente = :cl_codigo')
     Left = 352
     Top = 8
@@ -248,6 +248,7 @@ object dm_Clientes: Tdm_Clientes
         Name = 'CL_CODIGO'
         DataType = ftInteger
         ParamType = ptInput
+        Value = Null
       end>
     object qryProjetosPJ_CODIGO: TIntegerField
       AutoGenerateValue = arAutoInc

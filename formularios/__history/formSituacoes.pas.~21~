@@ -33,7 +33,6 @@ type
     edtDescrocap: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -52,15 +51,6 @@ implementation
 procedure TfrmSituacao.FormCreate(Sender: TObject);
 begin
    dm_Situacoes.qrySituacoes.Open;
-end;
-
-procedure TfrmSituacao.FormKeyPress(Sender: TObject; var Key: Char);
-begin
-   if Key = #13 then
-   begin
-      Key := #0;
-      Perform(WM_NEXTDLGCTL, 0, 0);
-   end;
 end;
 
 procedure TfrmSituacao.FormShow(Sender: TObject);

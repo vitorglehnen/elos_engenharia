@@ -108,6 +108,7 @@ type
     chkFinalizado: TDBCheckBox;
     btnCoordenadaMapsProjeto: TBitBtn;
     pnlGridProjetos: TPanel;
+    dbgProjetos: TJvDBGrid;
     edtDataInicioProjeto: TJvDBDateEdit;
     edtDataPrevisaoProjeto: TJvDBDateEdit;
     cbSituacaoProjeto: TJvDBComboBox;
@@ -117,7 +118,6 @@ type
     edtDtCadastroCad: TJvDBDateEdit;
     lblDescricaoProjeto: TLabel;
     dbedtPJ_DESCRICAO: TDBEdit;
-    dbgProjetos: TDBGrid;
     procedure btnNovoClick(Sender: TObject);
     procedure cbEstadosCadChange(Sender: TObject);
     procedure dbgConsultaDblClick(Sender: TObject);
@@ -310,6 +310,9 @@ procedure TfrmClientes.dbgConsultaDblClick(Sender: TObject);
 begin
    ntbPrincipal.PageIndex := 1;
    pgcPrincipal.ActivePageIndex := 0;
+
+   dm_Clientes.qryProjetos.ParamByName('CL_CODIGO').Value := FDSClientes.FieldByName('CL_CODIGO').Value;
+   FDSProjetos.Open;
 end;
 
 procedure TfrmClientes.DsClientesAfterInsert(TDataSet: TDataSet);
@@ -338,8 +341,6 @@ begin
       CarregaCidades;
       cbCidadesCad.ItemIndex := cbCidadesCad.Items.IndexOf('Mato Leitao');
    end;
-
-   FDSProjetos.Open;
 end;
 
 procedure TfrmClientes.DsClientesBeforePost(TDataSet: TDataSet);
@@ -510,10 +511,7 @@ begin
    begin
       AllowChange := False;
       MessageDlg('Salve ou cancele o registro antes de sair!', mtWarning, [mbOK], 0);
-      exit;
    end;
-
-   pgcPrincipal.ActivePageIndex := 0;
 end;
 
 procedure TfrmClientes.pgcPrincipalChange(Sender: TObject);

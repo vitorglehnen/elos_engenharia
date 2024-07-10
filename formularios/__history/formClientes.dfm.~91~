@@ -963,7 +963,7 @@ object frmClientes: TfrmClientes
                 Height = 212
                 Align = alClient
                 DataSource = dm_Clientes.dsProjetos
-                Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+                Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
                 TabOrder = 0
                 TitleFont.Charset = DEFAULT_CHARSET
                 TitleFont.Color = clWindowText
@@ -972,14 +972,18 @@ object frmClientes: TfrmClientes
                 TitleFont.Style = []
                 Columns = <
                   item
-                    Alignment = taLeftJustify
+                    Expanded = False
+                    FieldName = 'PJ_DESCRICAO'
+                    Width = 288
+                    Visible = True
+                  end
+                  item
                     Expanded = False
                     FieldName = 'PJ_TAMANHO'
                     Width = 64
                     Visible = True
                   end
                   item
-                    Alignment = taLeftJustify
                     Expanded = False
                     FieldName = 'PJ_VALOR'
                     Width = 64
@@ -988,13 +992,6 @@ object frmClientes: TfrmClientes
                   item
                     Expanded = False
                     FieldName = 'PJ_DATAPREVISAO'
-                    Width = 90
-                    Visible = True
-                  end
-                  item
-                    Expanded = False
-                    FieldName = 'PJ_DESCRICAO'
-                    Width = 288
                     Visible = True
                   end>
               end

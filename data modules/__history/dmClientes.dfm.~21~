@@ -12,8 +12,7 @@ object dm_Clientes: Tdm_Clientes
       'select *'
       'from clientes'
       'join cidades on ci_ibge = cl_cidade'
-      'join estados on es_ibge = ci_estado'
-      'order by cl_nome')
+      'join estados on es_ibge = ci_estado')
     Left = 16
     Top = 8
     object qryClientesCL_CODIGO: TIntegerField
@@ -62,14 +61,14 @@ object dm_Clientes: Tdm_Clientes
       Origin = 'CL_DTCADASTRO'
       ProviderFlags = [pfInUpdate]
       Required = True
-      EditMask = '99/99/0000;1;_'
+      EditMask = '!99/99/0000;1;_'
     end
     object qryClientesCL_DTNASCIMENTO: TDateField
       DisplayLabel = 'Data de nascimento'
       FieldName = 'CL_DTNASCIMENTO'
       Origin = 'CL_DTNASCIMENTO'
       ProviderFlags = [pfInUpdate]
-      EditMask = '99/99/0000;1;_'
+      EditMask = '!99/99/0000;1;_'
     end
     object qryClientesCL_CEP: TWideStringField
       DisplayLabel = 'CEP'
@@ -239,7 +238,7 @@ object dm_Clientes: Tdm_Clientes
     SQL.Strings = (
       'select pj.*, st.* '
       'from projetos pj'
-      'left join situacao st on st.st_codigo = pj.pj_situacao'
+      'inner join situacao st on st.st_codigo = pj.pj_situacao'
       'where pj.pj_cliente = :cl_codigo')
     Left = 352
     Top = 8
@@ -248,6 +247,7 @@ object dm_Clientes: Tdm_Clientes
         Name = 'CL_CODIGO'
         DataType = ftInteger
         ParamType = ptInput
+        Value = Null
       end>
     object qryProjetosPJ_CODIGO: TIntegerField
       AutoGenerateValue = arAutoInc
@@ -281,7 +281,6 @@ object dm_Clientes: Tdm_Clientes
       FieldName = 'PJ_VALOR'
       Origin = 'PJ_VALOR'
       DisplayFormat = 'R$ #,##0.00'
-      currency = True
       Precision = 18
       Size = 2
     end
@@ -342,12 +341,6 @@ object dm_Clientes: Tdm_Clientes
       DisplayLabel = 'Tipo'
       FieldName = 'PJ_TIPO'
       Origin = 'PJ_TIPO'
-    end
-    object wdstrngfldProjetosPJ_DESCRICAO: TWideStringField
-      DisplayLabel = 'Descri'#231#227'o'
-      FieldName = 'PJ_DESCRICAO'
-      Origin = 'PJ_DESCRICAO'
-      Size = 300
     end
   end
   object dsProjetos: TDataSource

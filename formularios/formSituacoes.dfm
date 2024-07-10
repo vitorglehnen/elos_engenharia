@@ -12,9 +12,11 @@ object frmSituacao: TfrmSituacao
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  KeyPreview = True
   Position = poScreenCenter
   Visible = True
   OnCreate = FormCreate
+  OnKeyPress = FormKeyPress
   OnShow = FormShow
   TextHeight = 15
   object pnlMain: TPanel
